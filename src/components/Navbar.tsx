@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Copy, Check, Menu, X, FileText } from 'lucide-react';
+import { Copy, Check, Menu, X, FileText, ArrowLeft } from 'lucide-react';
 import { TOKEN_DETAILS } from '../data/whitepaperData';
 
 interface NavbarProps {
   onCopyContract: () => void;
   copied: boolean;
+  isLegalView?: boolean;
+  onNavigateHome?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onCopyContract, copied }) => {
+export const Navbar: React.FC<NavbarProps> = ({ 
+  onCopyContract, 
+  copied, 
+  isLegalView = false,
+  onNavigateHome 
+}) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -28,6 +35,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onCopyContract, copied }) => {
     { name: 'Security', href: '#security' },
   ];
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (isLegalView && onNavigateHome) {
+      e.preventDefault();
+      onNavigateHome();
+      setTimeout(() => {
+        const id = href.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const handleBrandClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isLegalView && onNavigateHome) {
+      e.preventDefault();
+      onNavigateHome();
+    }
+  };
+
   const shortAddress = `${TOKEN_DETAILS.contractAddress.slice(0, 6)}...${TOKEN_DETAILS.contractAddress.slice(-4)}`;
 
   return (
@@ -40,7 +69,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onCopyContract, copied }) => {
         <div className="flex items-center justify-between">
           
           {/* Brand Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a 
+            href="#" 
+            onClick={handleBrandClick}
+            className="flex items-center gap-3 group"
+          >
             <div className="w-10 h-10 rounded-xl overflow-hidden border border-purple-500/40 p-0.5 bg-[#12002B] shadow-sm shadow-purple-500/20 group-hover:border-purple-400 group-hover:shadow-purple-500/40 transition-all">
               <img 
                 src="/gadatokenlogo.jpeg" 
@@ -63,10 +96,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onCopyContract, copied }) => {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-7">
+            {isLegalView && onNavigateHome && (
+              <button
+                onClick={onNavigateHome}
+                className="text-sm font-semibold text-purple-300 hover:text-white flex items-center gap-1.5 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                <span>Return to Home</span>
+              </button>
+            )}
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className="text-sm font-medium text-slate-300 hover:text-purple-300 transition-colors"
               >
                 {link.name}
@@ -94,6 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCopyContract, copied }) => {
             {/* Read Whitepaper CTA */}
             <a
               href="#whitepaper"
+              onClick={(e) => handleLinkClick(e, '#whitepaper')}
               className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-700 text-white font-semibold text-xs tracking-wide hover:from-purple-500 hover:to-indigo-500 transition-all shadow-md shadow-purple-600/30 border border-purple-400/30"
             >
               <FileText className="w-3.5 h-3.5" />
@@ -124,12 +168,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onCopyContract, copied }) => {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#0D0122] border-b border-purple-500/20 px-4 pt-4 pb-6 space-y-3 mt-3">
+          {isLegalView && onNavigateHome && (
+            <button
+              onClick={() => {
+                onNavigateHome();
+                setMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center gap-2 px-3 py-2 text-base font-semibold text-purple-300 hover:bg-purple-950/40 rounded-lg"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>Return to Home</span>
+            </button>
+          )}
+
           <div className="space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => handleLinkClick(e, link.href)}
                 className="block px-3 py-2 text-base font-medium text-slate-200 hover:text-purple-300 hover:bg-purple-950/40 rounded-lg"
               >
                 {link.name}
@@ -150,7 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onCopyContract, copied }) => {
             </button>
             <a
               href="#whitepaper"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleLinkClick(e, '#whitepaper')}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold text-sm shadow-md shadow-purple-600/30"
             >
               <FileText className="w-4 h-4" />

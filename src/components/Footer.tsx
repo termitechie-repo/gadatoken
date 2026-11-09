@@ -1,25 +1,36 @@
 import React from 'react';
-import { Copy, Check, ExternalLink, ArrowUp } from 'lucide-react';
+import { Copy, Check, ExternalLink, ArrowUp, ShieldCheck, FileText, Lock, Scale, AlertTriangle } from 'lucide-react';
 import { TOKEN_DETAILS } from '../data/whitepaperData';
 
 interface FooterProps {
   onCopyContract: () => void;
   copied: boolean;
+  onNavigateLegal?: (doc: 'privacy' | 'terms' | 'crypto-disclosures') => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied }) => {
+export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied, onNavigateLegal }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLegalClick = (e: React.MouseEvent<HTMLAnchorElement>, doc: 'privacy' | 'terms' | 'crypto-disclosures') => {
+    e.preventDefault();
+    if (onNavigateLegal) {
+      onNavigateLegal(doc);
+    } else {
+      window.location.hash = doc;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
     <footer className="bg-[#05000C] border-t border-purple-500/20 pt-16 pb-12 text-slate-200 font-medium">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 mb-12">
           
-          {/* Brand Info */}
-          <div className="md:col-span-2 flex flex-col items-center sm:items-start text-center sm:text-left">
+          {/* Column 1: Brand Info */}
+          <div className="sm:col-span-2 lg:col-span-1 flex flex-col items-center sm:items-start text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl overflow-hidden border border-purple-500/40 p-0.5 bg-[#12002B] shrink-0 shadow-md shadow-purple-600/20">
                 <img 
@@ -41,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied }) => {
               </div>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-200 font-medium max-w-md leading-relaxed mb-6 break-words text-center sm:text-left">
+            <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed mb-6 break-words text-center sm:text-left">
               The foundational utility asset powering decentralized communication, creator live-streaming, digital marketplace trade, and banking settlement across the Gada ecosystem.
             </p>
 
@@ -62,10 +73,11 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied }) => {
             </div>
           </div>
 
-          {/* Ecosystem Navigation */}
+          {/* Column 2: Ecosystem Platforms */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-            <h4 className="text-xs sm:text-sm font-mono uppercase tracking-wider text-white font-bold mb-4">
-              Ecosystem Platforms
+            <h4 className="text-xs sm:text-sm font-mono uppercase tracking-wider text-white font-bold mb-4 flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-purple-400" />
+              <span>Ecosystem Platforms</span>
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm font-medium text-slate-200 w-full max-w-xs sm:max-w-none">
               <li>
@@ -128,10 +140,11 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied }) => {
             </ul>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 3: Documentation */}
           <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-            <h4 className="text-xs sm:text-sm font-mono uppercase tracking-wider text-white font-bold mb-4">
-              Documentation
+            <h4 className="text-xs sm:text-sm font-mono uppercase tracking-wider text-white font-bold mb-4 flex items-center gap-2">
+              <FileText className="w-4 h-4 text-purple-400" />
+              <span>Documentation</span>
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-slate-200 w-full max-w-xs sm:max-w-none">
               <li>
@@ -162,12 +175,81 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied }) => {
             </ul>
           </div>
 
+          {/* Column 4: Legal & Compliance */}
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+            <h4 className="text-xs sm:text-sm font-mono uppercase tracking-wider text-white font-bold mb-4 flex items-center gap-2">
+              <Scale className="w-4 h-4 text-purple-400" />
+              <span>Legal & Compliance</span>
+            </h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-slate-200 w-full max-w-xs sm:max-w-none">
+              <li>
+                <a 
+                  href="#privacy" 
+                  onClick={(e) => handleLegalClick(e, 'privacy')}
+                  className="hover:text-purple-300 transition-colors flex items-center gap-2 py-1 justify-center sm:justify-start"
+                >
+                  <Lock className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Privacy Policy</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#terms" 
+                  onClick={(e) => handleLegalClick(e, 'terms')}
+                  className="hover:text-purple-300 transition-colors flex items-center gap-2 py-1 justify-center sm:justify-start"
+                >
+                  <Scale className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Terms & Conditions</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#crypto-disclosures" 
+                  onClick={(e) => handleLegalClick(e, 'crypto-disclosures')}
+                  className="hover:text-amber-300 transition-colors flex items-center gap-2 py-1 justify-center sm:justify-start"
+                >
+                  <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Crypto Risk Disclosures</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#crypto-disclosures" 
+                  onClick={(e) => handleLegalClick(e, 'crypto-disclosures')}
+                  className="hover:text-purple-300 transition-colors flex items-center gap-2 py-1 justify-center sm:justify-start"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
+                  <span>AML & Sanctions Policy</span>
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="mailto:contact@gadatoken.com" 
+                  className="hover:text-purple-300 transition-colors flex items-center gap-2 py-1 justify-center sm:justify-start text-purple-300 font-semibold"
+                >
+                  <span>Legal Inquiries Desk</span>
+                  <ExternalLink className="w-3 h-3 text-purple-400" />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        {/* Bottom Disclaimer Banner */}
+        <div className="py-4 px-5 rounded-2xl bg-[#0B011D] border border-purple-900/40 text-[11px] sm:text-xs text-slate-300 font-medium leading-relaxed mb-8 text-center sm:text-left">
+          <span className="font-bold text-white">Regulatory Disclaimer: </span>
+          Gada Token (GDT) is a cryptographic utility token deployed on the BNB Smart Chain designed strictly for digital communication, creator tipping, and e-commerce settlement within gada.chat and gadavoice.com. GDT is not an investment, security, or collective investment scheme. Please review our{' '}
+          <a href="#privacy" onClick={(e) => handleLegalClick(e, 'privacy')} className="text-purple-400 underline font-semibold hover:text-purple-300">Privacy Policy</a>,{' '}
+          <a href="#terms" onClick={(e) => handleLegalClick(e, 'terms')} className="text-purple-400 underline font-semibold hover:text-purple-300">Terms & Conditions</a>, and{' '}
+          <a href="#crypto-disclosures" onClick={(e) => handleLegalClick(e, 'crypto-disclosures')} className="text-amber-400 underline font-semibold hover:text-amber-300">Crypto Disclosures</a>{' '}
+          prior to holding or interacting with GDT tokens.
         </div>
 
         {/* Bottom Credits & Back to Top */}
         <div className="pt-8 border-t border-purple-900/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm font-mono text-slate-300 font-medium">
           <div className="text-center sm:text-left">
-            © 2026 Gada Token (gadatoken.com). All rights reserved. Hosted on Cloudflare Edge.
+            © 2026 GADA CHAT LTD. All rights reserved. gadatoken.com running on Cloudflare Global Edge.
           </div>
 
           <button

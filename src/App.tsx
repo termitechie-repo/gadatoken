@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Ecosystem } from './components/Ecosystem';
@@ -9,12 +9,35 @@ import { WhitepaperViewer } from './components/WhitepaperViewer';
 import { TrustSecurity } from './components/TrustSecurity';
 import { Disclaimer } from './components/Disclaimer';
 import { Footer } from './components/Footer';
+import { LegalPageViewer } from './components/LegalPageViewer';
 import { TOKEN_DETAILS } from './data/whitepaperData';
 import { Check } from 'lucide-react';
+
+type LegalView = 'privacy' | 'terms' | 'crypto-disclosures';
+type ViewMode = 'home' | LegalView;
 
 export function App() {
   const [copied, setCopied] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [currentView, setCurrentView] = useState<ViewMode>('home');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      if (hash === 'privacy' || hash === 'terms' || hash === 'crypto-disclosures') {
+        setCurrentView(hash as LegalView);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        setCurrentView('home');
+      }
+    };
+
+    // Check hash on initial load
+    handleHashChange();
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const handleCopyContract = () => {
     navigator.clipboard.writeText(TOKEN_DETAILS.contractAddress);
@@ -30,26 +53,56 @@ export function App() {
     }, 3000);
   };
 
+  const navigateToHome = () => {
+    setCurrentView('home');
+    window.location.hash = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const navigateToLegal = (doc: LegalView) => {
+    setCurrentView(doc);
+    window.location.hash = doc;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-[#080014] text-slate-100 flex flex-col font-sans relative selection:bg-purple-600/30 selection:text-purple-200">
       
       {/* Top Fixed Navbar */}
-      <Navbar onCopyContract={handleCopyContract} copied={copied} />
+      <Navbar 
+        onCopyContract={handleCopyContract} 
+        copied={copied} 
+        isLegalView={currentView !== 'home'}
+        onNavigateHome={navigateToHome}
+      />
 
-      {/* Main Page Flow */}
+      {/* Main Page Flow vs Legal Reader */}
       <main className="flex-1">
-        <Hero onCopyContract={handleCopyContract} copied={copied} />
-        <Ecosystem />
-        <TokenUtility />
-        <Tokenomics />
-        <Roadmap />
-        <WhitepaperViewer />
-        <TrustSecurity />
-        <Disclaimer />
+        {currentView === 'home' ? (
+          <>
+            <Hero onCopyContract={handleCopyContract} copied={copied} />
+            <Ecosystem />
+            <TokenUtility />
+            <Tokenomics />
+            <Roadmap />
+            <WhitepaperViewer />
+            <TrustSecurity />
+            <Disclaimer />
+          </>
+        ) : (
+          <LegalPageViewer 
+            initialDocId={currentView}
+            onNavigateHome={navigateToHome}
+          />
+        )}
       </main>
 
       {/* Global Footer */}
-      <Footer onCopyContract={handleCopyContract} copied={copied} />
+      <Footer 
+        onCopyContract={handleCopyContract} 
+        copied={copied} 
+        onNavigateLegal={navigateToLegal}
+      />
 
       {/* Copy Notification Toast */}
       {toastMessage && (
