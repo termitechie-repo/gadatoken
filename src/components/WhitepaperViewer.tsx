@@ -10,11 +10,9 @@ import {
   CheckCircle2, 
   BookOpen,
   Play,
-  Pause,
-  Sparkles
+  Pause
 } from 'lucide-react';
 import { WHITEPAPER_SLIDES, TOKEN_DETAILS } from '../data/whitepaperData';
-import { BorderBeam } from './BorderBeam';
 
 export const WhitepaperViewer: React.FC = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
@@ -48,20 +46,20 @@ export const WhitepaperViewer: React.FC = () => {
   };
 
   return (
-    <section id="whitepaper" className="py-20 sm:py-24 relative border-t border-purple-500/20 bg-[#0C011F]/70 horizon-beam">
+    <section id="whitepaper" className="py-20 sm:py-24 relative border-t border-purple-500/20 bg-[#0C011F]/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-xs font-mono text-purple-300 uppercase tracking-widest mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+            <BookOpen className="w-3.5 h-3.5 text-purple-400" />
             <span>Official Documentation</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Gada Token Whitepaper
           </h2>
           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-200 font-medium">
-            Read the complete 13-part whitepaper directly in your browser or download the original presentation file for offline study.
+            Read the complete 13-part whitepaper directly in your browser or download the official PDF document for offline study.
           </p>
         </div>
 
@@ -103,12 +101,14 @@ export const WhitepaperViewer: React.FC = () => {
             </button>
 
             <a
-              href="/Gada-Token-Whitepaper.pptx"
-              download="Gada-Token-Whitepaper.pptx"
+              href="/Gada-Token-Whitepaper.pdf"
+              download="Gada-Token-Whitepaper.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-purple-600/30 border border-purple-400/40"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download (.pptx)</span>
+              <span>Download Whitepaper (PDF)</span>
             </a>
           </div>
 
@@ -123,9 +123,6 @@ export const WhitepaperViewer: React.FC = () => {
           
           <div className="glass-panel rounded-2xl border border-purple-500/30 shadow-2xl shadow-purple-950/70 overflow-hidden flex flex-col min-h-[480px] sm:min-h-[520px] relative">
             
-            {/* Cinematic Travelling Border Beam */}
-            <BorderBeam size={220} duration={8} colorFrom="#A855F7" colorTo="#E0AAFF" />
-
             {/* Slide Header Toolbar */}
             <div className="bg-[#12002B] px-4 sm:px-6 py-3.5 border-b border-purple-500/20 flex items-center justify-between relative z-10">
               <div className="flex items-center gap-2 sm:gap-3 overflow-hidden">

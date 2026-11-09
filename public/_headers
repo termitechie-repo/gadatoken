@@ -13,3 +13,6 @@
 
 /*.pptx
   Cache-Control: public, max-age=86400
+
+/*.pdf
+  Cache-Control: public, max-age=86400

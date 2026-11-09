@@ -125,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               title="Copy Smart Contract Address"
               className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#14022D]/90 border border-purple-500/30 hover:border-purple-400/60 text-xs font-mono text-purple-200 hover:text-white transition-all shadow-sm"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
               <span>{shortAddress}</span>
               {copied ? (
                 <Check className="w-3.5 h-3.5 text-emerald-400" />

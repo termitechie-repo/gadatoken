@@ -1,16 +1,16 @@
 import React from 'react';
-import { MessageSquare, Users, ArrowUpRight, Layers, Sparkles } from 'lucide-react';
+import { MessageSquare, Users, ArrowUpRight, Layers } from 'lucide-react';
 import { TOKEN_DETAILS } from '../data/whitepaperData';
 
 export const Ecosystem: React.FC = () => {
   return (
-    <section id="ecosystem" className="py-24 relative border-t border-purple-500/20 bg-[#0C011F]/60 horizon-beam">
+    <section id="ecosystem" className="py-24 relative border-t border-purple-500/20 bg-[#0C011F]/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-xs font-mono text-purple-300 uppercase tracking-widest mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+            <Layers className="w-3.5 h-3.5 text-purple-400" />
             <span>Platform Matrix</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">

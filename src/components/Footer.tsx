@@ -153,8 +153,14 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied, onNaviga
                 </a>
               </li>
               <li>
-                <a href="/Gada-Token-Whitepaper.pptx" download className="hover:text-purple-300 transition-colors block py-1">
-                  Download Whitepaper (.pptx)
+                <a 
+                  href="/Gada-Token-Whitepaper.pdf" 
+                  download="Gada-Token-Whitepaper.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-purple-300 transition-colors block py-1"
+                >
+                  Download Whitepaper (PDF)
                 </a>
               </li>
               <li>
