@@ -171,18 +171,29 @@ export const WhitepaperViewer: React.FC = () => {
 
                 {/* Bullets Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-6">
-                  {currentSlide.bullets.map((b, i) => (
-                    <div 
-                      key={i} 
-                      className="p-3.5 sm:p-4 rounded-xl bg-[#14022D]/50 border border-purple-500/20 flex items-start gap-3 hover:border-purple-400/40 transition-colors"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
-                      <div>
-                        <h4 className="text-xs sm:text-sm font-bold text-white mb-1">{b.heading}</h4>
-                        <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed break-words">{b.description}</p>
+                  {currentSlide.bullets.map((b, i) => {
+                    const isGadaChat = b.heading.toLowerCase().includes('gada.chat');
+                    const isGadaVoice = b.heading.toLowerCase().includes('gadavoice');
+
+                    return (
+                      <div 
+                        key={i} 
+                        className="p-3.5 sm:p-4 rounded-xl bg-[#14022D]/50 border border-purple-500/20 flex items-start gap-3 hover:border-purple-400/40 transition-colors"
+                      >
+                        {isGadaChat ? (
+                          <img src="/gadachat-logo.png" alt="Gada Chat" className="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5 border border-purple-500/30" />
+                        ) : isGadaVoice ? (
+                          <img src="/gadavoice-logo.png" alt="GadaVoice" className="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5 border border-indigo-500/30" />
+                        ) : (
+                          <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                        )}
+                        <div>
+                          <h4 className="text-xs sm:text-sm font-bold text-white mb-1">{b.heading}</h4>
+                          <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed break-words">{b.description}</p>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 

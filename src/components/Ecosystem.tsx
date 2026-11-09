@@ -30,8 +30,8 @@ export const Ecosystem: React.FC = () => {
             
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-400/30 flex items-center justify-center text-purple-300 shadow-inner">
-                  <Users className="w-6 h-6" />
+                <div className="w-14 h-14 rounded-2xl overflow-hidden border border-purple-400/40 p-1 bg-[#12002B] shadow-lg shadow-purple-600/20 shrink-0">
+                  <img src="/gadachat-logo.png" alt="Gada Chat Logo" className="w-full h-full object-contain rounded-xl" />
                 </div>
                 <span className="text-xs font-mono text-purple-300 font-bold bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/30 whitespace-nowrap">
                   Social Network
@@ -86,8 +86,8 @@ export const Ecosystem: React.FC = () => {
             
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-indigo-500/15 border border-indigo-400/30 flex items-center justify-center text-indigo-300 shadow-inner">
-                  <MessageSquare className="w-6 h-6" />
+                <div className="w-14 h-14 rounded-2xl overflow-hidden border border-indigo-400/40 p-1 bg-[#12002B] shadow-lg shadow-indigo-600/20 shrink-0">
+                  <img src="/gadavoice-logo.png" alt="GadaVoice Logo" className="w-full h-full object-contain rounded-xl" />
                 </div>
                 <span className="text-xs font-mono text-indigo-300 font-bold bg-indigo-950/60 px-3 py-1 rounded-full border border-indigo-500/30 whitespace-nowrap">
                   Messenger & Commerce
