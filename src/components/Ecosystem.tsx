@@ -1,16 +1,17 @@
 import React from 'react';
-import { MessageSquare, Users, ArrowUpRight, Layers } from 'lucide-react';
+import { MessageSquare, Users, ArrowUpRight, Layers, Sparkles } from 'lucide-react';
 import { TOKEN_DETAILS } from '../data/whitepaperData';
 
 export const Ecosystem: React.FC = () => {
   return (
-    <section id="ecosystem" className="py-24 relative border-t border-purple-500/20 bg-[#0C011F]/60">
+    <section id="ecosystem" className="py-24 relative border-t border-purple-500/20 bg-[#0C011F]/60 horizon-beam">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-xs font-mono text-purple-300 uppercase tracking-widest mb-4">
-            Platform Matrix
+            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+            <span>Platform Matrix</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             The Gada Ecosystem
@@ -29,7 +30,7 @@ export const Ecosystem: React.FC = () => {
             
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-400/30 flex items-center justify-center text-purple-300">
+                <div className="w-12 h-12 rounded-xl bg-purple-500/15 border border-purple-400/30 flex items-center justify-center text-purple-300 shadow-inner">
                   <Users className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono text-purple-300 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-500/30">
@@ -85,7 +86,7 @@ export const Ecosystem: React.FC = () => {
             
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-xl bg-indigo-500/15 border border-indigo-400/30 flex items-center justify-center text-indigo-300">
+                <div className="w-12 h-12 rounded-xl bg-indigo-500/15 border border-indigo-400/30 flex items-center justify-center text-indigo-300 shadow-inner">
                   <MessageSquare className="w-6 h-6" />
                 </div>
                 <span className="text-xs font-mono text-indigo-300 bg-indigo-950/60 px-3 py-1 rounded-full border border-indigo-500/30">

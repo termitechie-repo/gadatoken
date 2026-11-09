@@ -105,18 +105,58 @@ html, body {
   animation: pulse-glow 4s ease-in-out infinite;
 }
 
-/* Horizontal scan line */
-@keyframes scanline {
+/* Anamorphic Lens Flare Sweep */
+@keyframes anamorphic-flare {
   0% {
-    transform: translateY(-100%);
+    transform: translateX(-150%) skewX(-25deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  40% {
+    transform: translateX(150%) skewX(-25deg);
+    opacity: 0;
   }
   100% {
-    transform: translateY(1000%);
+    transform: translateX(150%) skewX(-25deg);
+    opacity: 0;
   }
 }
 
-.animate-scanline {
-  animation: scanline 8s linear infinite;
+.animate-flare {
+  animation: anamorphic-flare 6s ease-in-out infinite;
+}
+
+/* Travelling Border Beam Spin */
+@keyframes border-beam-spin {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/* Celestial Horizon Light Beam */
+.horizon-beam {
+  position: relative;
+}
+.horizon-beam::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.8), rgba(224, 170, 255, 0.95), rgba(168, 85, 247, 0.8), transparent);
+  box-shadow: 0 0 15px 1px rgba(168, 85, 247, 0.6);
+}
+
+/* Perspective container */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
 }
 
 /* Slide in animation */

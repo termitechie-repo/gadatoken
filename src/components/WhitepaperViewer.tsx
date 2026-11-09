@@ -10,9 +10,11 @@ import {
   CheckCircle2, 
   BookOpen,
   Play,
-  Pause
+  Pause,
+  Sparkles
 } from 'lucide-react';
 import { WHITEPAPER_SLIDES, TOKEN_DETAILS } from '../data/whitepaperData';
+import { BorderBeam } from './BorderBeam';
 
 export const WhitepaperViewer: React.FC = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
@@ -46,13 +48,14 @@ export const WhitepaperViewer: React.FC = () => {
   };
 
   return (
-    <section id="whitepaper" className="py-20 sm:py-24 relative border-t border-purple-500/20 bg-[#0C011F]/70">
+    <section id="whitepaper" className="py-20 sm:py-24 relative border-t border-purple-500/20 bg-[#0C011F]/70 horizon-beam">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-xs font-mono text-purple-300 uppercase tracking-widest mb-4">
-            Official Documentation
+            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+            <span>Official Documentation</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Gada Token Whitepaper
@@ -118,10 +121,13 @@ export const WhitepaperViewer: React.FC = () => {
             : 'relative'
         }`}>
           
-          <div className="glass-panel rounded-2xl border border-purple-500/30 shadow-2xl shadow-purple-950/70 overflow-hidden flex flex-col min-h-[480px] sm:min-h-[520px]">
+          <div className="glass-panel rounded-2xl border border-purple-500/30 shadow-2xl shadow-purple-950/70 overflow-hidden flex flex-col min-h-[480px] sm:min-h-[520px] relative">
             
+            {/* Cinematic Travelling Border Beam */}
+            <BorderBeam size={220} duration={8} colorFrom="#A855F7" colorTo="#E0AAFF" />
+
             {/* Slide Header Toolbar */}
-            <div className="bg-[#12002B] px-4 sm:px-6 py-3.5 border-b border-purple-500/20 flex items-center justify-between">
+            <div className="bg-[#12002B] px-4 sm:px-6 py-3.5 border-b border-purple-500/20 flex items-center justify-between relative z-10">
               <div className="flex items-center gap-2 sm:gap-3 overflow-hidden">
                 <span className="text-[10px] sm:text-[11px] font-mono uppercase bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded font-semibold shrink-0">
                   {currentSlide.category}
@@ -145,7 +151,7 @@ export const WhitepaperViewer: React.FC = () => {
             {/* Slide Body with Fade-in Animation on slide change */}
             <div 
               key={currentSlide.id}
-              className="p-5 sm:p-8 md:p-10 flex-1 flex flex-col justify-between animate-fade-in-slide"
+              className="p-5 sm:p-8 md:p-10 flex-1 flex flex-col justify-between animate-fade-in-slide relative z-10"
             >
               <div>
                 <div className="mb-5 sm:mb-6">
@@ -159,7 +165,7 @@ export const WhitepaperViewer: React.FC = () => {
                   )}
                 </div>
 
-                <div className="bg-[#14022D]/70 p-3.5 sm:p-4 rounded-xl border border-purple-500/20 mb-5 sm:mb-6 text-xs sm:text-sm text-purple-100 leading-relaxed">
+                <div className="bg-[#14022D]/70 p-3.5 sm:p-4 rounded-xl border border-purple-500/20 mb-5 sm:mb-6 text-xs sm:text-sm text-purple-100 leading-relaxed shadow-inner">
                   {currentSlide.summary}
                 </div>
 
@@ -168,7 +174,7 @@ export const WhitepaperViewer: React.FC = () => {
                   {currentSlide.bullets.map((b, i) => (
                     <div 
                       key={i} 
-                      className="p-3.5 rounded-xl bg-[#14022D]/50 border border-purple-500/20 flex items-start gap-3"
+                      className="p-3.5 rounded-xl bg-[#14022D]/50 border border-purple-500/20 flex items-start gap-3 hover:border-purple-400/40 transition-colors"
                     >
                       <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
                       <div>
@@ -182,7 +188,7 @@ export const WhitepaperViewer: React.FC = () => {
 
               {/* Callout Footer of Slide */}
               {currentSlide.callout && (
-                <div className="p-3 sm:p-3.5 rounded-xl bg-purple-950/50 border border-purple-500/30 text-[11px] sm:text-xs font-mono text-purple-200 flex items-center justify-between">
+                <div className="p-3 sm:p-3.5 rounded-xl bg-purple-950/50 border border-purple-500/30 text-[11px] sm:text-xs font-mono text-purple-200 flex items-center justify-between shadow-sm">
                   <span className="truncate mr-2">{currentSlide.callout}</span>
                   <span className="text-[10px] text-purple-300/70 hidden sm:inline shrink-0">gadatoken.com</span>
                 </div>
@@ -191,7 +197,7 @@ export const WhitepaperViewer: React.FC = () => {
             </div>
 
             {/* Slide Navigation Bottom Bar */}
-            <div className="bg-[#12002B] px-4 sm:px-6 py-3.5 border-t border-purple-500/20 flex items-center justify-between gap-2">
+            <div className="bg-[#12002B] px-4 sm:px-6 py-3.5 border-t border-purple-500/20 flex items-center justify-between gap-2 relative z-10">
               
               <button
                 onClick={handlePrev}
