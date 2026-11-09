@@ -41,18 +41,18 @@ export const TokenUtility: React.FC = () => {
   ];
 
   return (
-    <section id="utility" className="py-24 relative border-t border-white/5 bg-[#080B11]">
+    <section id="utility" className="py-24 relative border-t border-purple-500/20 bg-[#080014]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-xs font-mono text-amber-400 uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-xs font-mono text-purple-300 uppercase tracking-widest mb-4">
             Token Mechanics
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Five Core Token Utilities
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-300">
+          <p className="mt-4 text-base sm:text-lg text-purple-200/80">
             Engineered for genuine transactional demand. Utilities are deployed in planned stages aligned with verified ecosystem rollouts.
           </p>
         </div>
@@ -65,16 +65,16 @@ export const TokenUtility: React.FC = () => {
             return (
               <div 
                 key={item.number}
-                className={`glass-panel rounded-2xl p-7 border border-white/10 glass-panel-hover flex flex-col justify-between ${
+                className={`glass-panel rounded-2xl p-7 border border-purple-500/30 glass-panel-hover flex flex-col justify-between ${
                   isFifth ? 'md:col-span-2 lg:col-span-2 lg:flex-row lg:items-center lg:gap-8' : ''
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+                    <div className="w-11 h-11 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-300">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-xs font-mono text-slate-500 font-bold">
+                    <span className="text-xs font-mono text-purple-300/80 font-bold">
                       PILLAR {item.number}
                     </span>
                   </div>
@@ -82,7 +82,7 @@ export const TokenUtility: React.FC = () => {
                   <h3 className="text-xl font-bold text-white mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-amber-400 font-medium mb-3">
+                  <p className="text-xs text-purple-300 font-medium mb-3">
                     {item.summary}
                   </p>
                   <p className="text-xs text-slate-300 leading-relaxed">
@@ -91,8 +91,8 @@ export const TokenUtility: React.FC = () => {
                 </div>
 
                 {isFifth && (
-                  <div className="mt-6 lg:mt-0 shrink-0 bg-slate-900/90 p-4 rounded-xl border border-slate-800 text-xs text-slate-400 font-mono max-w-sm">
-                    <span className="text-amber-400 font-semibold block mb-1">TRADFI COMPLIANCE</span>
+                  <div className="mt-6 lg:mt-0 shrink-0 bg-[#160233] p-4 rounded-xl border border-purple-500/30 text-xs text-purple-200/80 font-mono max-w-sm">
+                    <span className="text-purple-300 font-semibold block mb-1">TRADFI COMPLIANCE</span>
                     Negotiated with regulated institutions. Announced only after formal agreements are finalized.
                   </div>
                 )}

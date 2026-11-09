@@ -10,7 +10,7 @@ import { TrustSecurity } from './components/TrustSecurity';
 import { Disclaimer } from './components/Disclaimer';
 import { Footer } from './components/Footer';
 import { TOKEN_DETAILS } from './data/whitepaperData';
-import { Check, ShieldCheck } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 export function App() {
   const [copied, setCopied] = useState<boolean>(false);
@@ -31,7 +31,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080B11] text-slate-100 flex flex-col font-sans relative selection:bg-amber-500/20 selection:text-amber-200">
+    <div className="min-h-screen bg-[#080014] text-slate-100 flex flex-col font-sans relative selection:bg-purple-600/30 selection:text-purple-200">
       
       {/* Top Fixed Navbar */}
       <Navbar onCopyContract={handleCopyContract} copied={copied} />
@@ -53,11 +53,11 @@ export function App() {
 
       {/* Copy Notification Toast */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900/95 border border-amber-500/40 text-white shadow-2xl backdrop-blur-md animate-bounce duration-300">
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#180238]/95 border border-purple-500/50 text-white shadow-2xl shadow-purple-950/80 backdrop-blur-md animate-bounce duration-300">
           <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400">
             <Check className="w-3.5 h-3.5" />
           </div>
-          <div className="text-xs font-mono font-medium">
+          <div className="text-xs font-mono font-medium text-purple-100">
             {toastMessage}
           </div>
         </div>

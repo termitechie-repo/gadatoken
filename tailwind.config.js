@@ -8,18 +8,19 @@ export default {
     extend: {
       colors: {
         gada: {
-          bg: '#080B11',
-          card: '#0D1322',
-          cardHover: '#131C31',
-          border: 'rgba(255, 255, 255, 0.08)',
-          borderGold: 'rgba(212, 175, 55, 0.25)',
-          gold: '#D4AF37',
-          goldLight: '#F3E5AB',
-          goldDark: '#AA820A',
-          amber: '#F0B90B',
-          slate: '#8E9BAE',
-          muted: '#5A6679',
-          accent: '#1E293B',
+          bg: '#080014',
+          void: '#04000A',
+          card: 'rgba(20, 2, 45, 0.7)',
+          cardHover: 'rgba(32, 4, 72, 0.85)',
+          border: 'rgba(168, 85, 247, 0.2)',
+          borderGlow: 'rgba(192, 132, 252, 0.45)',
+          purple: '#9333EA',
+          violet: '#8B5CF6',
+          electric: '#A855F7',
+          neon: '#C084FC',
+          light: '#E9D5FF',
+          chrome: '#E2E8F0',
+          amber: '#F0B90B', // BNB Smart Chain accent
         }
       },
       fontFamily: {
@@ -27,8 +28,9 @@ export default {
         mono: ['JetBrains Mono', 'Fira Code', 'monospace']
       },
       boxShadow: {
-        'glow-gold': '0 0 35px -5px rgba(212, 175, 55, 0.15)',
-        'glow-subtle': '0 0 25px -5px rgba(240, 185, 11, 0.1)'
+        'glow-purple': '0 0 35px -5px rgba(168, 85, 247, 0.35)',
+        'glow-violet': '0 0 50px -10px rgba(139, 92, 246, 0.45)',
+        'glow-subtle': '0 0 25px -5px rgba(168, 85, 247, 0.15)'
       }
     },
   },
