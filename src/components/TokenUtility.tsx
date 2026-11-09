@@ -52,7 +52,7 @@ export const TokenUtility: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Five Core Token Utilities
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-purple-200/80">
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-200 font-medium">
             Engineered for genuine transactional demand. Utilities are deployed in planned stages aligned with verified ecosystem rollouts.
           </p>
         </div>
@@ -74,7 +74,7 @@ export const TokenUtility: React.FC = () => {
                     <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-purple-500/15 border border-purple-500/30 flex items-center justify-center text-purple-300">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[11px] sm:text-xs font-mono text-purple-300/80 font-bold">
+                    <span className="text-[11px] sm:text-xs font-mono text-purple-300 font-bold whitespace-nowrap">
                       PILLAR {item.number}
                     </span>
                   </div>
@@ -82,17 +82,17 @@ export const TokenUtility: React.FC = () => {
                   <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-purple-300 font-medium mb-2.5">
+                  <p className="text-xs sm:text-sm text-purple-300 font-bold mb-2">
                     {item.summary}
                   </p>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed break-words">
                     {item.details}
                   </p>
                 </div>
 
                 {isFifth && (
-                  <div className="mt-5 lg:mt-0 shrink-0 bg-[#160233] p-3.5 sm:p-4 rounded-xl border border-purple-500/30 text-xs text-purple-200/80 font-mono max-w-sm">
-                    <span className="text-purple-300 font-semibold block mb-1">TRADFI COMPLIANCE</span>
+                  <div className="mt-5 lg:mt-0 shrink-0 bg-[#160233] p-3.5 sm:p-4 rounded-xl border border-purple-500/30 text-xs sm:text-sm text-slate-200 font-mono font-medium max-w-sm">
+                    <span className="text-white font-bold block mb-1">TRADFI COMPLIANCE</span>
                     Negotiated with regulated institutions. Announced only after formal agreements are finalized.
                   </div>
                 )}

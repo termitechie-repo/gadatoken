@@ -38,7 +38,7 @@ export const TrustSecurity: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Trust, Security & Listing Framework
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-purple-200/80">
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-200 font-medium">
             Built on proven BNB Smart Chain infrastructure with verifiable on-chain transparency and strict compliance standards.
           </p>
         </div>
@@ -56,22 +56,22 @@ export const TrustSecurity: React.FC = () => {
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                 Verified Smart Contract
               </h3>
-              <p className="text-xs sm:text-sm text-purple-200/80 mb-5 sm:mb-6 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-200 font-medium mb-5 sm:mb-6 leading-relaxed break-words">
                 The GDT contract source code has been deployed and publicly verified on BscScan, allowing open inspection of all methods, events, and token variables.
               </p>
 
               <div className="space-y-2.5 sm:space-y-3 mb-6 font-mono text-[11px] sm:text-xs text-purple-200">
                 <div className="flex items-center justify-between p-2.5 rounded-lg bg-[#14022D] border border-purple-500/20">
-                  <span className="text-purple-300/70">Network:</span>
-                  <span className="text-white font-semibold">BNB Smart Chain (Mainnet)</span>
+                  <span className="text-purple-300/80 font-bold">Network:</span>
+                  <span className="text-white font-bold">BNB Smart Chain (Mainnet)</span>
                 </div>
                 <div className="flex items-center justify-between p-2.5 rounded-lg bg-[#14022D] border border-purple-500/20">
-                  <span className="text-purple-300/70">Compiler:</span>
-                  <span className="text-white font-semibold">Solidity (BEP-20 Standard)</span>
+                  <span className="text-purple-300/80 font-bold">Compiler:</span>
+                  <span className="text-white font-bold">Solidity (BEP-20 Standard)</span>
                 </div>
                 <div className="flex items-center justify-between p-2.5 rounded-lg bg-[#14022D] border border-purple-500/20">
-                  <span className="text-purple-300/70">Verification:</span>
-                  <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                  <span className="text-purple-300/80 font-bold">Verification:</span>
+                  <span className="text-emerald-400 font-bold flex items-center gap-1">
                     <CheckCircle2 className="w-3.5 h-3.5" /> Exact Match
                   </span>
                 </div>
@@ -82,7 +82,7 @@ export const TrustSecurity: React.FC = () => {
               href={TOKEN_DETAILS.explorerUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#160233] border border-purple-500/30 hover:border-purple-400 text-xs font-mono text-purple-200 hover:text-white transition-colors shadow-sm"
+              className="inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-[#160233] border border-purple-500/30 hover:border-purple-400 text-xs sm:text-sm font-mono font-bold text-white hover:text-purple-200 transition-colors shadow-sm"
             >
               <span>Inspect Contract on BscScan</span>
               <ExternalLink className="w-3.5 h-3.5 text-purple-300" />
@@ -99,33 +99,33 @@ export const TrustSecurity: React.FC = () => {
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                 Security & Anti-Phishing Protocols
               </h3>
-              <p className="text-xs sm:text-sm text-purple-200/80 mb-5 sm:mb-6 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-200 font-medium mb-5 sm:mb-6 leading-relaxed break-words">
                 Protecting user funds and maintaining network integrity are core operational tenets for the Gada ecosystem.
               </p>
 
               <div className="space-y-3 sm:space-y-3.5 mb-6">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                  <p className="text-xs text-purple-200/90 leading-relaxed">
-                    <strong className="text-white">Independent Audit:</strong> A comprehensive security audit report will be published upon completion of formal third-party review.
+                  <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
+                    <strong className="text-white font-bold mr-1">Independent Audit:</strong> A comprehensive security audit report will be published upon completion of formal third-party review.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                  <p className="text-xs text-purple-200/90 leading-relaxed">
-                    <strong className="text-white">Strict Non-Custodial Safety:</strong> The Gada team will never request your private keys, seed phrases, or wallet passwords.
+                  <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
+                    <strong className="text-white font-bold mr-1">Strict Non-Custodial Safety:</strong> The Gada team will never request your private keys, seed phrases, or wallet passwords.
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                  <p className="text-xs text-purple-200/90 leading-relaxed">
-                    <strong className="text-white">Authenticated Domains:</strong> Official communications are conducted solely via <span className="text-purple-300 font-mono">gadatoken.com</span>, <span className="text-purple-300 font-mono">gada.chat</span>, and <span className="text-purple-300 font-mono">gadavoice.com</span>.
+                  <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
+                    <strong className="text-white font-bold mr-1">Authenticated Domains:</strong> Official communications are conducted solely via <span className="text-purple-300 font-mono font-bold">gadatoken.com</span>, <span className="text-purple-300 font-mono font-bold">gada.chat</span>, and <span className="text-purple-300 font-mono font-bold">gadavoice.com</span>.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="p-3 rounded-xl bg-purple-950/60 border border-purple-500/30 text-xs text-purple-200 flex items-center gap-2.5 font-mono">
+            <div className="p-3 rounded-xl bg-purple-950/60 border border-purple-500/30 text-xs sm:text-sm text-slate-100 flex items-center gap-2.5 font-mono font-medium">
               <AlertTriangle className="w-4 h-4 shrink-0 text-purple-300" />
               <span>Always verify the token contract address before initiating any swap.</span>
             </div>
@@ -142,7 +142,7 @@ export const TrustSecurity: React.FC = () => {
             <h3 className="text-lg sm:text-2xl font-bold text-white mt-1">
               Four-Pillar Exchange Listing Strategy
             </h3>
-            <p className="text-xs text-purple-300/70 mt-1.5 sm:mt-2">
+            <p className="text-xs sm:text-sm text-slate-200 font-medium mt-1.5 sm:mt-2">
               Our systematic approach to meeting strict compliance, volume, and technical standards for global centralized and decentralized exchange listings.
             </p>
           </div>
@@ -154,7 +154,7 @@ export const TrustSecurity: React.FC = () => {
                   STEP {p.step}
                 </span>
                 <h4 className="text-sm font-bold text-white mb-1.5">{p.title}</h4>
-                <p className="text-xs text-purple-200/70 leading-relaxed">{p.desc}</p>
+                <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed break-words">{p.desc}</p>
               </div>
             ))}
           </div>

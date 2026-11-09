@@ -16,19 +16,22 @@ export const Disclaimer: React.FC = () => {
             </h3>
           </div>
 
-          <div className="space-y-3 text-xs text-purple-200/80 leading-relaxed font-sans">
-            <p>
-              <strong className="text-purple-100">Information Only:</strong> The contents of this website, the whitepaper, and associated materials are published solely for general informational and educational purposes. Nothing herein constitutes financial, investment, legal, or tax advice, nor should it be interpreted as an offer or solicitation to sell securities or regulated financial instruments.
+          <div className="space-y-4 text-sm sm:text-base text-slate-200 font-medium leading-relaxed font-sans">
+            <p className="break-words">
+              <strong className="text-white font-bold block sm:inline mb-1 sm:mb-0 mr-1.5 text-purple-300">Information Only:</strong>
+              The contents of this website, the whitepaper, and associated materials are published solely for general informational and educational purposes. Nothing herein constitutes financial, investment, legal, or tax advice, nor should it be interpreted as an offer or solicitation to sell securities or regulated financial instruments.
             </p>
-            <p>
-              <strong className="text-purple-100">Utility Token Status:</strong> Gada Token (GDT) is a digital utility token engineered exclusively for transactional and functional use within the Gada software ecosystem (including gada.chat, gadavoice.com, and partner platforms). GDT carries no promise, representation, or guarantee of profit, dividends, equity ownership, or future appreciation in value.
+            <p className="break-words">
+              <strong className="text-white font-bold block sm:inline mb-1 sm:mb-0 mr-1.5 text-purple-300">Utility Token Status:</strong>
+              Gada Token (GDT) is a digital utility token engineered exclusively for transactional and functional use within the Gada software ecosystem (including gada.chat, gadavoice.com, and partner platforms). GDT carries no promise, representation, or guarantee of profit, dividends, equity ownership, or future appreciation in value.
             </p>
-            <p>
-              <strong className="text-purple-100">Forward-Looking Disclosures:</strong> Statements regarding planned platform integrations, roadmap phases, banking partnerships, and exchange listings represent forward-looking objectives subject to commercial negotiations, technical feasibility, and evolving regulatory approvals across jurisdictions.
+            <p className="break-words">
+              <strong className="text-white font-bold block sm:inline mb-1 sm:mb-0 mr-1.5 text-purple-300">Forward-Looking Disclosures:</strong>
+              Statements regarding planned platform integrations, roadmap phases, banking partnerships, and exchange listings represent forward-looking objectives subject to commercial negotiations, technical feasibility, and evolving regulatory approvals across jurisdictions.
             </p>
-            <p className="text-[11px] text-purple-300/60 pt-2 border-t border-purple-900/60 font-mono">
-              Do Your Own Research (DYOR). Blockchain assets entail significant market volatility, smart contract risk, and regulatory uncertainties. Never allocate funds you cannot afford to lose.
-            </p>
+            <div className="pt-3 border-t border-purple-500/20 text-xs sm:text-sm text-purple-200 font-mono font-semibold leading-relaxed">
+              <strong>Notice:</strong> Do Your Own Research (DYOR). Blockchain assets entail market volatility, smart contract risk, and evolving regulatory frameworks. Never allocate capital you cannot afford to lose.
+            </div>
           </div>
         </div>
 

@@ -60,7 +60,7 @@ export const WhitepaperViewer: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Gada Token Whitepaper
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-purple-200/80">
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-200 font-medium">
             Read the complete 13-part whitepaper directly in your browser or download the original presentation file for offline study.
           </p>
         </div>
@@ -69,11 +69,11 @@ export const WhitepaperViewer: React.FC = () => {
         <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 mb-6">
           
           <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-between sm:justify-start">
-            <span className="text-xs font-mono text-purple-200 bg-[#160233] px-3 py-1.5 rounded-lg border border-purple-500/30 flex items-center gap-2">
+            <span className="text-xs sm:text-sm font-mono font-bold text-purple-200 bg-[#160233] px-3 py-1.5 rounded-lg border border-purple-500/30 flex items-center gap-2">
               <BookOpen className="w-3.5 h-3.5 text-purple-300" />
               <span>{TOKEN_DETAILS.version}</span>
             </span>
-            <span className="text-xs font-mono text-purple-300/80">
+            <span className="text-xs sm:text-sm font-mono font-bold text-slate-300">
               BEP-20 • 50B Supply
             </span>
           </div>
@@ -82,10 +82,10 @@ export const WhitepaperViewer: React.FC = () => {
           <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-end">
             <button
               onClick={() => setIsAutoPlay(!isAutoPlay)}
-              className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border text-xs font-mono transition-colors ${
+              className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border text-xs font-mono font-bold transition-colors ${
                 isAutoPlay 
                   ? 'bg-purple-600/30 border-purple-400 text-purple-200' 
-                  : 'bg-[#14022D] border-purple-500/30 text-purple-300/70 hover:text-white'
+                  : 'bg-[#14022D] border-purple-500/30 text-slate-300 hover:text-white'
               }`}
               title={isAutoPlay ? "Pause Auto-Slide" : "Auto-Play Slides"}
             >
@@ -95,7 +95,7 @@ export const WhitepaperViewer: React.FC = () => {
 
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#14022D] border border-purple-500/30 hover:border-purple-400 text-xs text-purple-200 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#14022D] border border-purple-500/30 hover:border-purple-400 text-xs font-bold text-slate-200 hover:text-white transition-colors"
               title="Print or Save as PDF"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -105,7 +105,7 @@ export const WhitepaperViewer: React.FC = () => {
             <a
               href="/Gada-Token-Whitepaper.pptx"
               download="Gada-Token-Whitepaper.pptx"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-semibold transition-all shadow-md shadow-purple-600/30 border border-purple-400/40"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-purple-600/30 border border-purple-400/40"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download (.pptx)</span>
@@ -129,10 +129,10 @@ export const WhitepaperViewer: React.FC = () => {
             {/* Slide Header Toolbar */}
             <div className="bg-[#12002B] px-4 sm:px-6 py-3.5 border-b border-purple-500/20 flex items-center justify-between relative z-10">
               <div className="flex items-center gap-2 sm:gap-3 overflow-hidden">
-                <span className="text-[10px] sm:text-[11px] font-mono uppercase bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded font-semibold shrink-0">
+                <span className="text-[10px] sm:text-[11px] font-mono uppercase bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded font-bold shrink-0">
                   {currentSlide.category}
                 </span>
-                <span className="text-xs font-mono text-purple-300/80 truncate">
+                <span className="text-xs font-mono font-bold text-slate-300 truncate">
                   Slide {currentSlide.id} of {totalSlides}
                 </span>
               </div>
@@ -159,13 +159,13 @@ export const WhitepaperViewer: React.FC = () => {
                     {currentSlide.title}
                   </h3>
                   {currentSlide.subtitle && (
-                    <p className="text-xs sm:text-sm font-medium text-purple-300 mt-1 font-mono">
+                    <p className="text-xs sm:text-sm font-semibold text-purple-300 mt-1 font-mono">
                       {currentSlide.subtitle}
                     </p>
                   )}
                 </div>
 
-                <div className="bg-[#14022D]/70 p-3.5 sm:p-4 rounded-xl border border-purple-500/20 mb-5 sm:mb-6 text-xs sm:text-sm text-purple-100 leading-relaxed shadow-inner">
+                <div className="bg-[#14022D]/70 p-4 sm:p-5 rounded-xl border border-purple-500/20 mb-5 sm:mb-6 text-sm sm:text-base text-slate-100 font-medium leading-relaxed shadow-inner break-words">
                   {currentSlide.summary}
                 </div>
 
@@ -174,12 +174,12 @@ export const WhitepaperViewer: React.FC = () => {
                   {currentSlide.bullets.map((b, i) => (
                     <div 
                       key={i} 
-                      className="p-3.5 rounded-xl bg-[#14022D]/50 border border-purple-500/20 flex items-start gap-3 hover:border-purple-400/40 transition-colors"
+                      className="p-3.5 sm:p-4 rounded-xl bg-[#14022D]/50 border border-purple-500/20 flex items-start gap-3 hover:border-purple-400/40 transition-colors"
                     >
                       <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
                       <div>
-                        <h4 className="text-xs font-bold text-white mb-0.5">{b.heading}</h4>
-                        <p className="text-xs text-slate-300 leading-normal">{b.description}</p>
+                        <h4 className="text-xs sm:text-sm font-bold text-white mb-1">{b.heading}</h4>
+                        <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed break-words">{b.description}</p>
                       </div>
                     </div>
                   ))}
@@ -188,9 +188,9 @@ export const WhitepaperViewer: React.FC = () => {
 
               {/* Callout Footer of Slide */}
               {currentSlide.callout && (
-                <div className="p-3 sm:p-3.5 rounded-xl bg-purple-950/50 border border-purple-500/30 text-[11px] sm:text-xs font-mono text-purple-200 flex items-center justify-between shadow-sm">
+                <div className="p-3.5 rounded-xl bg-purple-950/60 border border-purple-500/30 text-xs sm:text-sm font-mono font-semibold text-slate-100 flex items-center justify-between shadow-sm">
                   <span className="truncate mr-2">{currentSlide.callout}</span>
-                  <span className="text-[10px] text-purple-300/70 hidden sm:inline shrink-0">gadatoken.com</span>
+                  <span className="text-[11px] text-purple-300 font-bold hidden sm:inline shrink-0">gadatoken.com</span>
                 </div>
               )}
 

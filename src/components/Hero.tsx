@@ -99,8 +99,8 @@ export const Hero: React.FC<HeroProps> = ({ onCopyContract, copied }) => {
             The Unified Value Layer for the <br className="hidden sm:inline" />
             <span className="text-violet-gradient">Gada Ecosystem</span>
           </h1>
-          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-purple-200/90 max-w-2xl mx-auto font-normal leading-relaxed">
-            Powering chat, social networking, creator streaming, and digital marketplace trade across <strong className="text-white font-medium">gada.chat</strong> and <strong className="text-white font-medium">gadavoice.com</strong> with planned banking settlements.
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-slate-200 max-w-2xl mx-auto font-medium leading-relaxed break-words">
+            Powering chat, social networking, creator streaming, and digital marketplace trade across <strong className="text-white font-bold">gada.chat</strong> and <strong className="text-white font-bold">gadavoice.com</strong> with planned banking settlements.
           </p>
         </div>
 

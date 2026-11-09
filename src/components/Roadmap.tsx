@@ -17,7 +17,7 @@ export const Roadmap: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
             Five Phases of Growth
           </h2>
-          <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-purple-200/80">
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-200 font-medium">
             A deliberate, execution-first roadmap centered on authentic user adoption across the Gada platform ecosystem.
           </p>
         </div>
