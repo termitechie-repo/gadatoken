@@ -112,14 +112,14 @@ export const WHITEPAPER_SLIDES: WhitepaperSlide[] = [
     subtitle: "Allocation and stewardship of 50 Billion GDT",
     summary: "Balanced resource allocation engineered to safeguard long-term development, deep market liquidity, strategic banking integration, and community incentives.",
     bullets: [
-      { heading: "Ecosystem & Platform Development", description: "Continuous engineering and infrastructure scaling for gada.chat, gadavoice.com, and future products." },
-      { heading: "Liquidity & Exchange Listings", description: "Provisioning robust DEX liquidity pools and satisfying tier-1 centralized exchange capital reserve standards." },
-      { heading: "Banking & Strategic Partnerships", description: "Integration programs, regulatory licensing escrow, and financial institution partner channels." },
-      { heading: "Community & Rewards", description: "User onboarding grants, creator creator-fund distributions, and network activity campaigns." },
-      { heading: "Team & Advisors", description: "Long-term incentive alignment bound by multi-year linear vesting cliffs." },
-      { heading: "Strategic Reserve", description: "Operational continuity, security reserves, and unforeseen technological integration needs." }
+      { heading: "1. Ecosystem & Platform Development (20%)", description: "10,000,000,000 GDT (10 Billion) dedicated to continuous engineering of gada.chat, gadavoice.com, and future products." },
+      { heading: "2. Liquidity & Exchange Listings (20%)", description: "10,000,000,000 GDT (10 Billion) provisioned for market liquidity and tier-1 exchange capital requirements." },
+      { heading: "3. Banking & Strategic Partnerships (10%)", description: "5,000,000,000 GDT (5 Billion) allocated to TradFi integrations, licensed fiat gateways, and partner channels." },
+      { heading: "4. Community & Rewards (5%)", description: "2,500,000,000 GDT (2.5 Billion) for user incentives, creator micro-rewards, and engagement campaigns." },
+      { heading: "5. Team & Advisors (15%)", description: "7,500,000,000 GDT (7.5 Billion) bound by multi-year linear vesting cliffs to ensure long-term alignment." },
+      { heading: "6. Strategic Reserve (30%)", description: "15,000,000,000 GDT (15 Billion) reserved for operational continuity, protocol security, and future network expansion." }
     ],
-    callout: "Final allocation percentages, vesting cliffs, and liquidity lock verifications published prior to public circulation."
+    callout: "Total Supply: 50 Billion GDT | 100% Fixed Allocation Structure Verified"
   },
   {
     id: 8,
@@ -278,39 +278,51 @@ export const ROADMAP_DATA: RoadmapPhase[] = [
 
 export const TOKENOMICS_ALLOCATION: TokenAllocation[] = [
   {
+    id: 1,
     category: "Ecosystem & Platform Development",
-    share: "35%",
+    share: "20%",
+    amount: "10,000,000,000 GDT",
     purpose: "Dedicated funding for continuous engineering of gada.chat, gadavoice.com, and future decentralized applications.",
-    percentageEstimate: 35
+    percentageEstimate: 20
   },
   {
+    id: 2,
     category: "Liquidity & Exchange Listings",
-    share: "25%",
+    share: "20%",
+    amount: "10,000,000,000 GDT",
     purpose: "Reserved for decentralized liquidity pool provisioning and meeting tier-1 centralized exchange capital requirements.",
-    percentageEstimate: 25
+    percentageEstimate: 20
   },
   {
+    id: 3,
     category: "Banking & Strategic Partnerships",
-    share: "15%",
+    share: "10%",
+    amount: "5,000,000,000 GDT",
     purpose: "TradFi bridge initiatives, licensed fiat gateway integration, and financial institution escrow reserves.",
+    percentageEstimate: 10
+  },
+  {
+    id: 4,
+    category: "Community Rewards & Incentives",
+    share: "5%",
+    amount: "2,500,000,000 GDT",
+    purpose: "Direct rewards for content creators, streaming audiences, community moderators, and platform adoption.",
+    percentageEstimate: 5
+  },
+  {
+    id: 5,
+    category: "Team & Advisors",
+    share: "15%",
+    amount: "7,500,000,000 GDT",
+    purpose: "Core contributors and institutional advisors, governed by strict linear vesting cliffs over 24-36 months.",
     percentageEstimate: 15
   },
   {
-    category: "Community Rewards & Incentives",
-    share: "10%",
-    purpose: "Direct rewards for content creators, streaming audiences, community moderators, and platform adoption.",
-    percentageEstimate: 10
-  },
-  {
-    category: "Team & Advisors",
-    share: "10%",
-    purpose: "Core contributors and institutional advisors, governed by strict linear vesting cliffs over 24-36 months.",
-    percentageEstimate: 10
-  },
-  {
+    id: 6,
     category: "Strategic Reserve",
-    share: "5%",
+    share: "30%",
+    amount: "15,000,000,000 GDT",
     purpose: "Emergency contingency reserve, long-term protocol security upgrades, and institutional risk management.",
-    percentageEstimate: 5
+    percentageEstimate: 30
   }
 ];

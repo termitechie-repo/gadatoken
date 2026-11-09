@@ -77,28 +77,57 @@ export const Tokenomics: React.FC = () => {
             </span>
           </div>
 
+          {/* Full Distribution Segment Bar */}
+          <div className="mb-8 p-4 rounded-xl bg-[#14022D]/60 border border-purple-500/20">
+            <div className="flex items-center justify-between text-xs font-mono text-purple-300/80 mb-2">
+              <span>Allocation Distribution</span>
+              <span className="text-white font-bold">100% (50,000,000,000 GDT)</span>
+            </div>
+            <div className="w-full h-3 rounded-full overflow-hidden flex bg-purple-950/80 p-0.5 gap-0.5">
+              <div style={{ width: '20%' }} className="bg-purple-500 h-full rounded-l-full" title="Ecosystem & Platform Development (20%)" />
+              <div style={{ width: '20%' }} className="bg-violet-500 h-full" title="Liquidity & Exchange Listings (20%)" />
+              <div style={{ width: '10%' }} className="bg-indigo-500 h-full" title="Banking & Strategic Partnerships (10%)" />
+              <div style={{ width: '5%' }} className="bg-fuchsia-500 h-full" title="Community Rewards & Incentives (5%)" />
+              <div style={{ width: '15%' }} className="bg-pink-500 h-full" title="Team & Advisors (15%)" />
+              <div style={{ width: '30%' }} className="bg-purple-400 h-full rounded-r-full" title="Strategic Reserve (30%)" />
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {TOKENOMICS_ALLOCATION.map((item) => (
               <div 
                 key={item.category}
-                className="bg-[#14022D]/80 p-4 sm:p-5 rounded-xl border border-purple-500/20 hover:border-purple-400/40 transition-colors"
+                className="bg-[#14022D]/80 p-4 sm:p-5 rounded-xl border border-purple-500/20 hover:border-purple-400/40 transition-all hover:translate-y-[-2px] flex flex-col justify-between"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <h4 className="text-xs sm:text-sm font-semibold text-white truncate mr-2">{item.category}</h4>
-                  <span className="text-xs font-mono font-bold text-purple-300 bg-purple-500/20 px-2 py-0.5 rounded border border-purple-500/30 shrink-0">
-                    {item.share}
-                  </span>
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-purple-500/10 text-purple-300/90 border border-purple-500/20">
+                      0{item.id}
+                    </span>
+                    <span className="text-sm font-mono font-bold text-white bg-purple-500/25 px-2.5 py-0.5 rounded-md border border-purple-400/40 shadow-sm shadow-purple-500/20">
+                      {item.share}
+                    </span>
+                  </div>
+
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-1.5">{item.category}</h4>
+                  
+                  {item.amount && (
+                    <div className="text-xs font-mono font-semibold text-purple-300 mb-3 flex items-center gap-1.5">
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+                      <span>{item.amount}</span>
+                    </div>
+                  )}
+
+                  {/* Progress bar */}
+                  <div className="w-full bg-purple-950/60 h-1.5 rounded-full mb-3 overflow-hidden">
+                    <div 
+                      className="bg-gradient-to-r from-purple-600 via-violet-500 to-indigo-500 h-full rounded-full shadow-sm shadow-purple-500/50"
+                      style={{ width: `${item.percentageEstimate || 10}%` }}
+                    />
+                  </div>
                 </div>
 
-                {/* Progress bar with electric purple gradient */}
-                <div className="w-full bg-purple-950/60 h-1.5 rounded-full mb-3 overflow-hidden">
-                  <div 
-                    className="bg-gradient-to-r from-purple-600 via-violet-500 to-indigo-500 h-full rounded-full shadow-sm shadow-purple-500/50"
-                    style={{ width: `${item.percentageEstimate || 10}%` }}
-                  />
-                </div>
-
-                <p className="text-xs text-purple-200/70 leading-relaxed">
+                <p className="text-xs text-purple-200/75 leading-relaxed mt-2 pt-2 border-t border-purple-500/15">
                   {item.purpose}
                 </p>
               </div>

@@ -20,8 +20,10 @@ export interface RoadmapPhase {
 }
 
 export interface TokenAllocation {
+  id: number;
   category: string;
   share: string;
+  amount: string;
   purpose: string;
-  percentageEstimate?: number;
+  percentageEstimate: number;
 }
