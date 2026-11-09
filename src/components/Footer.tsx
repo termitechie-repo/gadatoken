@@ -16,7 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied }) => {
     <footer className="bg-[#05000C] border-t border-purple-500/20 pt-16 pb-12 text-purple-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10 mb-12">
           
           {/* Brand Info */}
           <div className="md:col-span-2">
@@ -45,10 +45,13 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied }) => {
               The foundational utility asset powering decentralized communication, creator live-streaming, digital marketplace trade, and banking settlement across the Gada ecosystem.
             </p>
 
-            {/* Contract Bar */}
-            <div className="inline-flex items-center gap-2 p-2 rounded-xl bg-[#14022D] border border-purple-500/30 text-xs font-mono max-w-full overflow-hidden">
-              <span className="text-purple-300/70 px-1">Contract:</span>
-              <span className="text-purple-100 truncate select-all">{TOKEN_DETAILS.contractAddress}</span>
+            {/* Contract Bar (Wrap-Safe on Mobile) */}
+            <div className="inline-flex items-center justify-between gap-2 p-2 rounded-xl bg-[#14022D] border border-purple-500/30 text-xs font-mono max-w-full">
+              <span className="text-purple-300/70 px-1 hidden sm:inline">Contract:</span>
+              <span className="text-purple-100 truncate select-all font-mono">
+                <span className="sm:hidden">{`${TOKEN_DETAILS.contractAddress.slice(0, 10)}...${TOKEN_DETAILS.contractAddress.slice(-8)}`}</span>
+                <span className="hidden sm:inline">{TOKEN_DETAILS.contractAddress}</span>
+              </span>
               <button
                 onClick={onCopyContract}
                 className="p-1.5 rounded-lg bg-[#200445] hover:bg-[#2C065E] text-purple-200 hover:text-white transition-colors shrink-0"
@@ -103,7 +106,7 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied }) => {
                   rel="noopener noreferrer"
                   className="hover:text-purple-300 transition-colors flex items-center justify-between"
                 >
-                  <span>BscScan Contract Explorer</span>
+                  <span>BscScan Explorer</span>
                   <ExternalLink className="w-3 h-3 text-purple-400" />
                 </a>
               </li>
@@ -148,13 +151,13 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied }) => {
 
         {/* Bottom Credits & Back to Top */}
         <div className="pt-8 border-t border-purple-900/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono">
-          <div>
+          <div className="text-center sm:text-left">
             © 2026 Gada Token (gadatoken.com). All rights reserved. Hosted on Cloudflare Edge.
           </div>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-purple-300/80 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-purple-300/80 hover:text-white transition-colors self-center sm:self-auto"
           >
             <span>Back to top</span>
             <ArrowUp className="w-3.5 h-3.5" />
