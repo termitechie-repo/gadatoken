@@ -10,6 +10,8 @@ import { TrustSecurity } from './components/TrustSecurity';
 import { Disclaimer } from './components/Disclaimer';
 import { Footer } from './components/Footer';
 import { LegalPageViewer } from './components/LegalPageViewer';
+import { SiteOpeningLoader } from './components/SiteOpeningLoader';
+import { CoinConfetti } from './components/CoinConfetti';
 import { TOKEN_DETAILS } from './data/whitepaperData';
 import { Check } from 'lucide-react';
 
@@ -20,6 +22,9 @@ export function App() {
   const [copied, setCopied] = useState<boolean>(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [currentView, setCurrentView] = useState<ViewMode>('home');
+  const [showLoader, setShowLoader] = useState<boolean>(true);
+  const [showConfetti, setShowConfetti] = useState<boolean>(false);
+  const [confettiTrigger, setConfettiTrigger] = useState<number>(0);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -65,9 +70,38 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleLoaderComplete = () => {
+    setShowLoader(false);
+    setShowConfetti(true);
+    setConfettiTrigger(Date.now());
+  };
+
+  const handleTriggerConfetti = () => {
+    setShowConfetti(true);
+    setConfettiTrigger(Date.now());
+  };
+
+  const handleConfettiDone = () => {
+    setShowConfetti(false);
+  };
+
   return (
     <div className="min-h-screen bg-[#080014] text-slate-100 flex flex-col font-sans relative selection:bg-purple-600/30 selection:text-purple-200">
       
+      {/* Cinematic Site Opening Loader with 3D Spinning Coin */}
+      {showLoader && (
+        <SiteOpeningLoader onComplete={handleLoaderComplete} />
+      )}
+
+      {/* Cinematic Gada Token 3D Coin Confetti Drop */}
+      {showConfetti && (
+        <CoinConfetti 
+          key={confettiTrigger} 
+          triggerKey={confettiTrigger} 
+          onComplete={handleConfettiDone} 
+        />
+      )}
+
       {/* Top Fixed Navbar */}
       <Navbar 
         onCopyContract={handleCopyContract} 
@@ -80,7 +114,11 @@ export function App() {
       <main className="flex-1">
         {currentView === 'home' ? (
           <>
-            <Hero onCopyContract={handleCopyContract} copied={copied} />
+            <Hero 
+              onCopyContract={handleCopyContract} 
+              copied={copied} 
+              onTriggerConfetti={handleTriggerConfetti}
+            />
             <Ecosystem />
             <TokenUtility />
             <Tokenomics />

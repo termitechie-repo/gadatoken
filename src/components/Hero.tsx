@@ -6,9 +6,10 @@ import { CinematicCanvas } from './CinematicCanvas';
 interface HeroProps {
   onCopyContract: () => void;
   copied: boolean;
+  onTriggerConfetti?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onCopyContract, copied }) => {
+export const Hero: React.FC<HeroProps> = ({ onCopyContract, copied, onTriggerConfetti }) => {
   const coinContainerRef = useRef<HTMLDivElement | null>(null);
   const [tilt, setTilt] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
@@ -63,6 +64,8 @@ export const Hero: React.FC<HeroProps> = ({ onCopyContract, copied }) => {
         <div className="flex justify-center mb-8">
           <div 
             ref={coinContainerRef}
+            onClick={onTriggerConfetti}
+            title="Click to drop Gada Token coins!"
             style={{
               transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
               transition: 'transform 0.15s ease-out',
