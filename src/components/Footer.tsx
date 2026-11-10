@@ -1,6 +1,7 @@
 import React from 'react';
 import { Copy, Check, ExternalLink, ArrowUp, ShieldCheck, FileText, Lock, Scale, AlertTriangle } from 'lucide-react';
 import { TOKEN_DETAILS } from '../data/whitepaperData';
+import { TelegramIcon, FacebookIcon } from './SocialIcons';
 
 interface FooterProps {
   onCopyContract: () => void;
@@ -70,6 +71,35 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied, onNaviga
               >
                 {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
+            </div>
+
+            {/* Official Social Media Channels */}
+            <div className="mt-5 w-full flex flex-col items-center sm:items-start">
+              <span className="text-[11px] font-mono uppercase text-purple-300 font-bold tracking-wider mb-2.5 flex items-center gap-1.5">
+                Official Channels
+              </span>
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                <a
+                  href={TOKEN_DETAILS.socials.telegram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0088cc]/15 hover:bg-[#0088cc]/25 border border-[#0088cc]/40 text-xs font-semibold text-sky-200 hover:text-white transition-all shadow-sm group"
+                  title="Join Gada Chat on Telegram"
+                >
+                  <TelegramIcon className="w-4 h-4 text-sky-400 group-hover:scale-110 transition-transform" />
+                  <span>Telegram</span>
+                </a>
+                <a
+                  href={TOKEN_DETAILS.socials.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#1877F2]/15 hover:bg-[#1877F2]/25 border border-[#1877F2]/40 text-xs font-semibold text-blue-200 hover:text-white transition-all shadow-sm group"
+                  title="Follow Gada Token on Facebook"
+                >
+                  <FacebookIcon className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+                  <span>Facebook</span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -258,13 +288,36 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied, onNaviga
             © 2026 GADA CHAT LTD. All rights reserved. gadatoken.com running on Cloudflare Global Edge.
           </div>
 
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-purple-300 hover:text-white font-bold transition-colors self-center sm:self-auto"
-          >
-            <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3">
+              <a
+                href={TOKEN_DETAILS.socials.telegram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-300 hover:text-sky-400 transition-colors p-1"
+                title="Telegram (@gadachat)"
+              >
+                <TelegramIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={TOKEN_DETAILS.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple-300 hover:text-blue-400 transition-colors p-1"
+                title="Facebook Community"
+              >
+                <FacebookIcon className="w-4 h-4" />
+              </a>
+            </div>
+
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-1.5 text-purple-300 hover:text-white font-bold transition-colors self-center sm:self-auto"
+            >
+              <span>Back to top</span>
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
 
       </div>

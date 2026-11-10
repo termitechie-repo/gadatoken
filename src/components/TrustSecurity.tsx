@@ -119,7 +119,7 @@ export const TrustSecurity: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
                   <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
-                    <strong className="text-white font-bold mr-1">Authenticated Domains:</strong> Official communications are conducted solely via <span className="text-purple-300 font-mono font-bold">gadatoken.com</span>, <span className="text-purple-300 font-mono font-bold">gada.chat</span>, and <span className="text-purple-300 font-mono font-bold">gadavoice.com</span>.
+                    <strong className="text-white font-bold mr-1">Authenticated Domains & Channels:</strong> Official communications are conducted solely via <span className="text-purple-300 font-mono font-bold">gadatoken.com</span>, <span className="text-purple-300 font-mono font-bold">gada.chat</span>, <span className="text-purple-300 font-mono font-bold">gadavoice.com</span>, Telegram (<a href={TOKEN_DETAILS.socials.telegram} target="_blank" rel="noopener noreferrer" className="text-sky-300 underline font-semibold hover:text-white">@gadachat</a>), and Facebook (<a href={TOKEN_DETAILS.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-blue-300 underline font-semibold hover:text-white">Gada Community</a>).
                   </p>
                 </div>
               </div>

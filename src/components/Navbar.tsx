@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Copy, Check, Menu, X, FileText, ArrowLeft } from 'lucide-react';
 import { TOKEN_DETAILS } from '../data/whitepaperData';
+import { TelegramIcon, FacebookIcon } from './SocialIcons';
 
 interface NavbarProps {
   onCopyContract: () => void;
@@ -143,6 +144,28 @@ export const Navbar: React.FC<NavbarProps> = ({
               <FileText className="w-3.5 h-3.5" />
               <span>Whitepaper</span>
             </a>
+
+            {/* Social Channels */}
+            <div className="flex items-center gap-1.5 border-l border-purple-500/20 pl-2">
+              <a
+                href={TOKEN_DETAILS.socials.telegram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-[#0088cc]/10 hover:bg-[#0088cc]/25 border border-[#0088cc]/30 text-sky-400 hover:text-white transition-all shadow-sm"
+                title="Join Telegram Community (@gadachat)"
+              >
+                <TelegramIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={TOKEN_DETAILS.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-lg bg-[#1877F2]/10 hover:bg-[#1877F2]/25 border border-[#1877F2]/30 text-blue-400 hover:text-white transition-all shadow-sm"
+                title="Follow Facebook Community"
+              >
+                <FacebookIcon className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -213,6 +236,30 @@ export const Navbar: React.FC<NavbarProps> = ({
               <FileText className="w-4 h-4" />
               <span>Read Whitepaper</span>
             </a>
+
+            {/* Official Socials on Mobile */}
+            <div className="grid grid-cols-2 gap-2 pt-1">
+              <a
+                href={TOKEN_DETAILS.socials.telegram}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-[#0088cc]/15 border border-[#0088cc]/30 text-xs font-semibold text-sky-200 hover:text-white"
+              >
+                <TelegramIcon className="w-4 h-4 text-sky-400" />
+                <span>Telegram</span>
+              </a>
+              <a
+                href={TOKEN_DETAILS.socials.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-[#1877F2]/15 border border-[#1877F2]/30 text-xs font-semibold text-blue-200 hover:text-white"
+              >
+                <FacebookIcon className="w-4 h-4 text-blue-400" />
+                <span>Facebook</span>
+              </a>
+            </div>
           </div>
         </div>
       )}

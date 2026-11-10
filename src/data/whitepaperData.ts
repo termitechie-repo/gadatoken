@@ -17,6 +17,10 @@ export const TOKEN_DETAILS = {
     messenger: "gadavoice.com",
     messengerUrl: "https://gadavoice.com",
     company: "GADA CHAT LTD"
+  },
+  socials: {
+    telegram: "https://t.me/gadachat",
+    facebook: "https://www.facebook.com/share/1E1epkWBcr"
   }
 };
 
