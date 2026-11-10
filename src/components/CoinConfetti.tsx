@@ -5,28 +5,50 @@ interface CoinConfettiProps {
   onComplete?: () => void;
 }
 
-interface CoinParticle {
+interface ConfettiCoin {
+  type: 'coin';
   x: number;
   y: number;
   vx: number;
   vy: number;
-  scale: number;
+  size: number;
+  coinType: number; // 0: Violet/Official, 1: Gold, 2: Platinum
   rotX: number;
   rotY: number;
   rotZ: number;
   rotSpeedX: number;
   rotSpeedY: number;
-  rotSpeedZ: number;
-  wobble: number;
-  wobbleSpeed: number;
+  sway: number;
+  swaySpeed: number;
+  swayWidth: number;
   alpha: number;
 }
+
+interface ConfettiFoil {
+  type: 'foil';
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  width: number;
+  height: number;
+  color: string;
+  rotX: number;
+  rotZ: number;
+  rotSpeedX: number;
+  rotSpeedZ: number;
+  sway: number;
+  swaySpeed: number;
+  alpha: number;
+}
+
+type ConfettiParticle = ConfettiCoin | ConfettiFoil;
 
 export const CoinConfetti: React.FC<CoinConfettiProps> = ({ triggerKey = 0, onComplete }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    // Respect reduced motion accessibility setting
+    // Respect user's reduced motion setting
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (mediaQuery.matches) {
       if (onComplete) onComplete();
@@ -49,93 +71,164 @@ export const CoinConfetti: React.FC<CoinConfettiProps> = ({ triggerKey = 0, onCo
     };
     window.addEventListener('resize', handleResize);
 
-    // Pre-render the circular GDT coin sprite on an offscreen canvas
-    const coinSize = 100;
-    const offscreen = document.createElement('canvas');
-    offscreen.width = coinSize;
-    offscreen.height = coinSize;
-    const offCtx = offscreen.getContext('2d');
+    // Pre-render 3 varieties of offscreen coin textures for silky 60fps performance
+    const spriteSize = 96;
+    const offscreenCanvases: HTMLCanvasElement[] = [];
 
-    const drawFallbackCoin = () => {
-      if (!offCtx) return;
-      offCtx.clearRect(0, 0, coinSize, coinSize);
-      
-      // Outer metallic gradient rim
-      const grad = offCtx.createRadialGradient(coinSize / 2, coinSize / 2, coinSize / 4, coinSize / 2, coinSize / 2, coinSize / 2);
-      grad.addColorStop(0, '#A855F7');
-      grad.addColorStop(0.7, '#6B21A8');
-      grad.addColorStop(1, '#3B0764');
+    const createCoinSprite = (variant: 'official' | 'gold' | 'platinum') => {
+      const oc = document.createElement('canvas');
+      oc.width = spriteSize;
+      oc.height = spriteSize;
+      const octx = oc.getContext('2d');
+      if (!octx) return oc;
 
-      offCtx.beginPath();
-      offCtx.arc(coinSize / 2, coinSize / 2, coinSize / 2 - 2, 0, Math.PI * 2);
-      offCtx.fillStyle = grad;
-      offCtx.fill();
-      offCtx.lineWidth = 3;
-      offCtx.strokeStyle = '#E9D5FF';
-      offCtx.stroke();
+      const center = spriteSize / 2;
+      const radius = center - 4;
 
-      // Inner text
-      offCtx.fillStyle = '#FFFFFF';
-      offCtx.font = 'bold 22px "Plus Jakarta Sans", sans-serif';
-      offCtx.textAlign = 'center';
-      offCtx.textBaseline = 'middle';
-      offCtx.fillText('GDT', coinSize / 2, coinSize / 2);
+      // 1. Outer rim gradient
+      const rimGrad = octx.createRadialGradient(center, center, radius * 0.7, center, center, radius);
+      if (variant === 'gold') {
+        rimGrad.addColorStop(0, '#F59E0B');
+        rimGrad.addColorStop(0.7, '#D97706');
+        rimGrad.addColorStop(1, '#78350F');
+      } else if (variant === 'platinum') {
+        rimGrad.addColorStop(0, '#FFFFFF');
+        rimGrad.addColorStop(0.7, '#CBD5E1');
+        rimGrad.addColorStop(1, '#475569');
+      } else {
+        rimGrad.addColorStop(0, '#C084FC');
+        rimGrad.addColorStop(0.7, '#9333EA');
+        rimGrad.addColorStop(1, '#3B0764');
+      }
+
+      octx.beginPath();
+      octx.arc(center, center, radius, 0, Math.PI * 2);
+      octx.fillStyle = rimGrad;
+      octx.fill();
+
+      // 2. Coin Face
+      const faceGrad = octx.createLinearGradient(0, 0, spriteSize, spriteSize);
+      if (variant === 'gold') {
+        faceGrad.addColorStop(0, '#FCD34D');
+        faceGrad.addColorStop(0.5, '#F59E0B');
+        faceGrad.addColorStop(1, '#B45309');
+      } else if (variant === 'platinum') {
+        faceGrad.addColorStop(0, '#F8FAFC');
+        faceGrad.addColorStop(0.5, '#E2E8F0');
+        faceGrad.addColorStop(1, '#94A3B8');
+      } else {
+        faceGrad.addColorStop(0, '#4C1D95');
+        faceGrad.addColorStop(0.5, '#2E1065');
+        faceGrad.addColorStop(1, '#1E0048');
+      }
+
+      octx.beginPath();
+      octx.arc(center, center, radius - 3, 0, Math.PI * 2);
+      octx.fillStyle = faceGrad;
+      octx.fill();
+
+      // 3. Central GDT Embellishment
+      octx.fillStyle = variant === 'gold' ? '#78350F' : variant === 'platinum' ? '#1E293B' : '#F3E8FF';
+      octx.font = 'bold 20px "Plus Jakarta Sans", sans-serif';
+      octx.textAlign = 'center';
+      octx.textBaseline = 'middle';
+      octx.fillText('GDT', center, center - 1);
+
+      // Micro inner border
+      octx.beginPath();
+      octx.arc(center, center, radius - 6, 0, Math.PI * 2);
+      octx.lineWidth = 1;
+      octx.strokeStyle = variant === 'gold' ? 'rgba(254, 240, 138, 0.6)' : variant === 'platinum' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(216, 180, 254, 0.6)';
+      octx.stroke();
+
+      return oc;
     };
 
-    drawFallbackCoin();
+    offscreenCanvases.push(createCoinSprite('official'));
+    offscreenCanvases.push(createCoinSprite('gold'));
+    offscreenCanvases.push(createCoinSprite('platinum'));
 
-    // Load actual GDT logo into the offscreen canvas
-    const img = new Image();
-    img.src = '/gadatokenlogo.jpeg';
-    img.onload = () => {
-      if (!offCtx) return;
-      offCtx.clearRect(0, 0, coinSize, coinSize);
+    // Also load actual GDT logo into variant 0 when loaded
+    const officialImg = new Image();
+    officialImg.src = '/gadatokenlogo.jpeg';
+    officialImg.onload = () => {
+      const oc0 = offscreenCanvases[0];
+      const octx0 = oc0.getContext('2d');
+      if (!octx0) return;
+      const center = spriteSize / 2;
+      const radius = center - 4;
 
-      offCtx.save();
-      // Circular clip
-      offCtx.beginPath();
-      offCtx.arc(coinSize / 2, coinSize / 2, coinSize / 2 - 2, 0, Math.PI * 2);
-      offCtx.clip();
+      octx0.clearRect(0, 0, spriteSize, spriteSize);
+      octx0.save();
+      octx0.beginPath();
+      octx0.arc(center, center, radius, 0, Math.PI * 2);
+      octx0.clip();
+      octx0.drawImage(officialImg, 0, 0, spriteSize, spriteSize);
+      octx0.restore();
 
-      // Draw image
-      offCtx.drawImage(img, 0, 0, coinSize, coinSize);
-      offCtx.restore();
-
-      // Metallic rim overlay
-      offCtx.beginPath();
-      offCtx.arc(coinSize / 2, coinSize / 2, coinSize / 2 - 2, 0, Math.PI * 2);
-      offCtx.lineWidth = 3.5;
-      offCtx.strokeStyle = 'rgba(216, 180, 254, 0.85)';
-      offCtx.stroke();
+      // Crisp outer metallic rim
+      octx0.beginPath();
+      octx0.arc(center, center, radius, 0, Math.PI * 2);
+      octx0.lineWidth = 3.5;
+      octx0.strokeStyle = 'rgba(216, 180, 254, 0.9)';
+      octx0.stroke();
     };
 
-    // Initialize coin particles
-    const particleCount = width < 640 ? 32 : 58;
-    const particles: CoinParticle[] = [];
+    // Spawn Particles (Coins + Floating Foil Sparkles)
+    const isMobile = width < 768;
+    const coinCount = isMobile ? 42 : 78;
+    const foilCount = isMobile ? 25 : 45;
+    const particles: ConfettiParticle[] = [];
 
-    for (let i = 0; i < particleCount; i++) {
-      const scale = Math.random() * 0.65 + 0.35; // 0.35x to 1.0x scale for 3D depth
+    // Coins
+    for (let i = 0; i < coinCount; i++) {
+      const size = Math.random() * 16 + 22; // 22px to 38px confetti coin size
       particles.push({
+        type: 'coin',
         x: Math.random() * width,
-        y: -(Math.random() * (height * 0.8) + 60), // Staggered spawn above screen
-        vx: (Math.random() - 0.5) * 2.2,
-        vy: (Math.random() * 3 + 4.5) * (scale + 0.2), // Closer coins fall faster
-        scale,
+        // Staggered top distribution: some start right at the top edge, others follow behind
+        y: -(Math.random() * 320 + 15),
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: Math.random() * 1.6 + 1.8, // Smooth floaty falling speed (1.8 to 3.4 px/frame)
+        size,
+        coinType: i % 3, // alternate official, gold, platinum
         rotX: Math.random() * Math.PI * 2,
         rotY: Math.random() * Math.PI * 2,
+        rotZ: (Math.random() - 0.5) * 0.8,
+        rotSpeedX: (Math.random() - 0.5) * 0.07 + 0.035, // Smooth flipping
+        rotSpeedY: (Math.random() - 0.5) * 0.05 + 0.02,
+        sway: Math.random() * Math.PI * 2,
+        swaySpeed: Math.random() * 0.03 + 0.025,
+        swayWidth: Math.random() * 1.8 + 1.2, // Gentle horizontal floating
+        alpha: 1,
+      });
+    }
+
+    // Accompanying metallic foil specks for rich celebratory confetti depth
+    const foilColors = ['#F59E0B', '#C084FC', '#A855F7', '#E2E8F0', '#38BDF8'];
+    for (let i = 0; i < foilCount; i++) {
+      particles.push({
+        type: 'foil',
+        x: Math.random() * width,
+        y: -(Math.random() * 300 + 20),
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: Math.random() * 1.8 + 1.6,
+        width: Math.random() * 4 + 4,
+        height: Math.random() * 8 + 6,
+        color: foilColors[Math.floor(Math.random() * foilColors.length)],
+        rotX: Math.random() * Math.PI * 2,
         rotZ: Math.random() * Math.PI * 2,
-        rotSpeedX: (Math.random() - 0.5) * 0.12 + 0.05,
-        rotSpeedY: (Math.random() - 0.5) * 0.14 + 0.06,
+        rotSpeedX: (Math.random() - 0.5) * 0.12,
         rotSpeedZ: (Math.random() - 0.5) * 0.08,
-        wobble: Math.random() * Math.PI * 2,
-        wobbleSpeed: Math.random() * 0.06 + 0.02,
+        sway: Math.random() * Math.PI * 2,
+        swaySpeed: Math.random() * 0.04 + 0.03,
         alpha: 1,
       });
     }
 
     let isCompleted = false;
     const startTime = performance.now();
-    const maxDuration = 7500; // 7.5 seconds safety cutoff
+    const maxDuration = 9000; // 9 seconds max cutoff
 
     const render = (now: number) => {
       const elapsed = now - startTime;
@@ -146,53 +239,69 @@ export const CoinConfetti: React.FC<CoinConfettiProps> = ({ triggerKey = 0, onCo
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        // Physics step
-        p.wobble += p.wobbleSpeed;
-        p.x += p.vx + Math.sin(p.wobble) * 0.9;
+        // Smooth aerodynamic sway
+        p.sway += p.swaySpeed;
+        const currentSway = Math.sin(p.sway) * (p.type === 'coin' ? p.swayWidth : 2.0);
+        p.x += p.vx + currentSway;
         p.y += p.vy;
 
-        // 3D rotation step
+        // Smooth 3D rotation
         p.rotX += p.rotSpeedX;
-        p.rotY += p.rotSpeedY;
-        p.rotZ += p.rotSpeedZ;
 
-        // Fade out near bottom of screen
-        if (p.y > height - 120) {
-          p.alpha = Math.max(0, 1 - (p.y - (height - 120)) / 180);
+        // Smooth fade out near the bottom
+        if (p.y > height - 100) {
+          p.alpha = Math.max(0, 1 - (p.y - (height - 100)) / 140);
         }
 
-        if (p.y < height + 100 && p.alpha > 0.01 && elapsed < maxDuration) {
+        if (p.y < height + 80 && p.alpha > 0.01 && elapsed < maxDuration) {
           activeCount++;
-
-          const cosX = Math.cos(p.rotX);
-          const cosY = Math.cos(p.rotY);
 
           ctx.save();
           ctx.globalAlpha = p.alpha;
           ctx.translate(p.x, p.y);
-          ctx.rotate(p.rotZ);
 
-          // 3D tumble transformation
-          ctx.scale(cosX * p.scale, cosY * p.scale);
+          if (p.type === 'coin') {
+            p.rotY += p.rotSpeedY;
+            // Aerodynamic tilt: coin tilts slightly in the direction of its sway
+            const tiltZ = p.rotZ + Math.sin(p.sway) * 0.35;
+            ctx.rotate(tiltZ);
 
-          // Draw physical coin edge if edge-on
-          if (Math.abs(cosX) < 0.22 || Math.abs(cosY) < 0.22) {
-            ctx.beginPath();
-            ctx.arc(0, 0, coinSize / 2, 0, Math.PI * 2);
-            ctx.fillStyle = '#C084FC';
-            ctx.shadowColor = 'rgba(168, 85, 247, 0.8)';
-            ctx.shadowBlur = 10;
-            ctx.fill();
-            ctx.shadowBlur = 0;
+            // 3D perspective tumbling (scale in X and Y)
+            const cosX = Math.cos(p.rotX);
+            const cosY = Math.cos(p.rotY);
+            ctx.scale(cosX, cosY);
+
+            const scaleRatio = p.size / spriteSize;
+            const drawRadius = p.size / 2;
+
+            // Draw metallic 3D rim edge when flipping edge-on
+            if (Math.abs(cosX) < 0.28 || Math.abs(cosY) < 0.28) {
+              ctx.beginPath();
+              ctx.arc(0, 0, drawRadius, 0, Math.PI * 2);
+              ctx.fillStyle = p.coinType === 1 ? '#FDE68A' : p.coinType === 2 ? '#FFFFFF' : '#E9D5FF';
+              ctx.shadowColor = p.coinType === 1 ? 'rgba(245, 158, 11, 0.7)' : 'rgba(168, 85, 247, 0.7)';
+              ctx.shadowBlur = 8;
+              ctx.fill();
+              ctx.shadowBlur = 0;
+            }
+
+            // Draw coin face
+            const oc = offscreenCanvases[p.coinType] || offscreenCanvases[0];
+            ctx.drawImage(oc, -drawRadius, -drawRadius, p.size, p.size);
+          } else {
+            // Foil speck
+            p.rotZ += p.rotSpeedZ;
+            ctx.rotate(p.rotZ);
+            ctx.scale(Math.cos(p.rotX), 1);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.width / 2, -p.height / 2, p.width, p.height);
           }
 
-          // Draw the coin face
-          ctx.drawImage(offscreen, -coinSize / 2, -coinSize / 2, coinSize, coinSize);
           ctx.restore();
         }
       }
 
-      // If all particles cleared the viewport or duration elapsed, conclude gracefully
+      // Check continuation or cleanup
       if (activeCount > 0 && elapsed < maxDuration) {
         animationFrameId = requestAnimationFrame(render);
       } else if (!isCompleted) {

@@ -70,10 +70,13 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleLoaderComplete = () => {
-    setShowLoader(false);
+  const handleLoaderFadeStart = () => {
     setShowConfetti(true);
     setConfettiTrigger(Date.now());
+  };
+
+  const handleLoaderComplete = () => {
+    setShowLoader(false);
   };
 
   const handleTriggerConfetti = () => {
@@ -90,7 +93,10 @@ export function App() {
       
       {/* Cinematic Site Opening Loader with 3D Spinning Coin */}
       {showLoader && (
-        <SiteOpeningLoader onComplete={handleLoaderComplete} />
+        <SiteOpeningLoader 
+          onFadeStart={handleLoaderFadeStart}
+          onComplete={handleLoaderComplete} 
+        />
       )}
 
       {/* Cinematic Gada Token 3D Coin Confetti Drop */}

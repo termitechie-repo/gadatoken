@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 interface SiteOpeningLoaderProps {
+  onFadeStart?: () => void;
   onComplete: () => void;
 }
 
-export const SiteOpeningLoader: React.FC<SiteOpeningLoaderProps> = ({ onComplete }) => {
+export const SiteOpeningLoader: React.FC<SiteOpeningLoaderProps> = ({ onFadeStart, onComplete }) => {
   const [fading, setFading] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
 
@@ -18,12 +19,12 @@ export const SiteOpeningLoader: React.FC<SiteOpeningLoaderProps> = ({ onComplete
         }
         return prev + 5;
       });
-    }, 70);
+    }, 65);
 
-    // Auto complete after 1.8 seconds
+    // Auto complete after 1.6 seconds
     const timer = setTimeout(() => {
       handleDismiss();
-    }, 1800);
+    }, 1650);
 
     return () => {
       clearInterval(progressInterval);
@@ -34,6 +35,9 @@ export const SiteOpeningLoader: React.FC<SiteOpeningLoaderProps> = ({ onComplete
   const handleDismiss = () => {
     if (fading) return;
     setFading(true);
+    if (onFadeStart) {
+      onFadeStart();
+    }
     setTimeout(() => {
       onComplete();
     }, 600); // Wait for fade-out transition
