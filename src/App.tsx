@@ -70,13 +70,10 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleLoaderFadeStart = () => {
-    setShowConfetti(true);
-    setConfettiTrigger(Date.now());
-  };
-
   const handleLoaderComplete = () => {
     setShowLoader(false);
+    setShowConfetti(true);
+    setConfettiTrigger(Date.now());
   };
 
   const handleTriggerConfetti = () => {
@@ -94,7 +91,6 @@ export function App() {
       {/* Cinematic Site Opening Loader with 3D Spinning Coin */}
       {showLoader && (
         <SiteOpeningLoader 
-          onFadeStart={handleLoaderFadeStart}
           onComplete={handleLoaderComplete} 
         />
       )}

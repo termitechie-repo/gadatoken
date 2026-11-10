@@ -8,6 +8,19 @@ interface SiteOpeningLoaderProps {
 export const SiteOpeningLoader: React.FC<SiteOpeningLoaderProps> = ({ onFadeStart, onComplete }) => {
   const [fading, setFading] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
+  const dismissedRef = React.useRef<boolean>(false);
+
+  const handleDismiss = () => {
+    if (dismissedRef.current) return;
+    dismissedRef.current = true;
+    setFading(true);
+    if (onFadeStart) {
+      onFadeStart();
+    }
+    setTimeout(() => {
+      onComplete();
+    }, 450); // Snappy smooth fade-out
+  };
 
   useEffect(() => {
     // Smooth progress increment
@@ -19,12 +32,12 @@ export const SiteOpeningLoader: React.FC<SiteOpeningLoaderProps> = ({ onFadeStar
         }
         return prev + 5;
       });
-    }, 65);
+    }, 55);
 
-    // Auto complete after 1.6 seconds
+    // Auto complete after ~1.55s
     const timer = setTimeout(() => {
       handleDismiss();
-    }, 1650);
+    }, 1550);
 
     return () => {
       clearInterval(progressInterval);
@@ -32,21 +45,10 @@ export const SiteOpeningLoader: React.FC<SiteOpeningLoaderProps> = ({ onFadeStar
     };
   }, []);
 
-  const handleDismiss = () => {
-    if (fading) return;
-    setFading(true);
-    if (onFadeStart) {
-      onFadeStart();
-    }
-    setTimeout(() => {
-      onComplete();
-    }, 600); // Wait for fade-out transition
-  };
-
   return (
     <div 
       onClick={handleDismiss}
-      className={`fixed inset-0 z-50 bg-[#080014] flex flex-col items-center justify-center cursor-pointer select-none transition-opacity duration-600 ease-out ${
+      className={`fixed inset-0 z-50 bg-[#080014] flex flex-col items-center justify-center cursor-pointer select-none transition-opacity duration-450 ease-out ${
         fading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
     >
