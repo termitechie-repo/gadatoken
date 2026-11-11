@@ -148,9 +148,7 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied, onNaviga
                   className="hover:text-emerald-300 transition-colors flex items-center justify-between p-1.5 rounded-lg hover:bg-emerald-950/40"
                 >
                   <div className="flex items-center gap-2.5">
-                    <div className="w-5 h-5 rounded-md bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0 text-emerald-400">
-                      <Handshake className="w-3.5 h-3.5" />
-                    </div>
+                    <img src="/gadacoop-logo.png" alt="gadacoop.org" className="w-5 h-5 rounded-md object-contain shrink-0 border border-emerald-500/30" />
                     <span className="font-semibold text-white">gadacoop.org</span>
                     <span className="text-[11px] text-emerald-300/80 font-mono">(Cooperative)</span>
                   </div>

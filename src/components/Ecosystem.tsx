@@ -142,8 +142,8 @@ export const Ecosystem: React.FC = () => {
             
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl overflow-hidden border border-emerald-400/40 p-1 bg-[#062419] shadow-lg shadow-emerald-600/20 shrink-0 flex items-center justify-center text-emerald-400">
-                  <Handshake className="w-7 h-7" />
+                <div className="w-14 h-14 rounded-2xl overflow-hidden border border-emerald-400/40 p-1 bg-[#12002B] shadow-lg shadow-emerald-600/20 shrink-0">
+                  <img src="/gadacoop-logo.png" alt="gadacoop.org Logo" className="w-full h-full object-contain rounded-xl" />
                 </div>
                 <span className="text-xs font-mono text-emerald-300 font-bold bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-500/30 whitespace-nowrap">
                   Cooperative Platform

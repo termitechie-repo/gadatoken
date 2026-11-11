@@ -184,9 +184,7 @@ export const WhitepaperViewer: React.FC = () => {
                         ) : isGadaVoice ? (
                           <img src="/gadavoice-logo.png" alt="GadaVoice" className="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5 border border-indigo-500/30" />
                         ) : isGadaCoop ? (
-                          <div className="w-5 h-5 rounded-md bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0 mt-0.5 text-emerald-400">
-                            <Handshake className="w-3.5 h-3.5" />
-                          </div>
+                          <img src="/gadacoop-logo.png" alt="gadacoop.org" className="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5 border border-emerald-500/30" />
                         ) : (
                           <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
                         )}
