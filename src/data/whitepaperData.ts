@@ -16,6 +16,8 @@ export const TOKEN_DETAILS = {
     socialUrl: "https://gada.chat",
     messenger: "gadavoice.com",
     messengerUrl: "https://gadavoice.com",
+    coop: "gadacoop.org",
+    coopUrl: "https://gadacoop.org",
     company: "GADA CHAT LTD"
   },
   socials: {
@@ -70,13 +72,14 @@ export const WHITEPAPER_SLIDES: WhitepaperSlide[] = [
     title: "THE GADA ECOSYSTEM",
     category: "Platform Products",
     subtitle: "Where GDT operates with real transactional utility",
-    summary: "GDT functions as the universal medium of exchange across two flagship platforms owned and developed within the Gada network.",
+    summary: "GDT functions as the universal medium of exchange across flagship platforms developed within the Gada network.",
     bullets: [
       { heading: "gada.chat (Social Platform)", description: "Owned by GADA CHAT LTD. Features verified user profiles, niche communities, and creator channels where GDT powers micro-tipping, reward mechanisms, and peer-to-peer transfers." },
       { heading: "gadavoice.com (Messenger & Marketplace)", description: "Next-generation secure communication platform combining 1-on-1 and group messaging with an embedded marketplace for goods and services, creator live-streaming, and community tools." },
+      { heading: "gadacoop.org (Cooperative Platform)", description: "Decentralized cooperative platform for community savings, member pooling, mutual aid, micro-financing, and cooperative enterprise with transparent GDT settlement." },
       { heading: "Extensible Architecture", description: "The ecosystem is built to continually onboard external merchants, third-party mini-apps, and enterprise integrations." }
     ],
-    callout: "Two interconnected platforms: Social community (gada.chat) and Commerce messenger (gadavoice.com)."
+    callout: "Interconnected platforms: Social (gada.chat), Commerce messenger (gadavoice.com), and Cooperative platform (gadacoop.org)."
   },
   {
     id: 5,

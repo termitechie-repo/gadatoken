@@ -23,7 +23,7 @@ export const Disclaimer: React.FC = () => {
             </p>
             <p className="break-words">
               <strong className="text-white font-bold block sm:inline mb-1 sm:mb-0 mr-1.5 text-purple-300">Utility Token Status:</strong>
-              Gada Token (GDT) is a digital utility token engineered exclusively for transactional and functional use within the Gada software ecosystem (including gada.chat, gadavoice.com, and partner platforms). GDT carries no promise, representation, or guarantee of profit, dividends, equity ownership, or future appreciation in value.
+              Gada Token (GDT) is a digital utility token engineered exclusively for transactional and functional use within the Gada software ecosystem (including gada.chat, gadavoice.com, gadacoop.org, and partner platforms). GDT carries no promise, representation, or guarantee of profit, dividends, equity ownership, or future appreciation in value.
             </p>
             <p className="break-words">
               <strong className="text-white font-bold block sm:inline mb-1 sm:mb-0 mr-1.5 text-purple-300">Forward-Looking Disclosures:</strong>

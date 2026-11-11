@@ -10,7 +10,8 @@ import {
   CheckCircle2, 
   BookOpen,
   Play,
-  Pause
+  Pause,
+  Handshake
 } from 'lucide-react';
 import { WHITEPAPER_SLIDES, TOKEN_DETAILS } from '../data/whitepaperData';
 
@@ -171,6 +172,7 @@ export const WhitepaperViewer: React.FC = () => {
                   {currentSlide.bullets.map((b, i) => {
                     const isGadaChat = b.heading.toLowerCase().includes('gada.chat');
                     const isGadaVoice = b.heading.toLowerCase().includes('gadavoice');
+                    const isGadaCoop = b.heading.toLowerCase().includes('gadacoop');
 
                     return (
                       <div 
@@ -181,6 +183,10 @@ export const WhitepaperViewer: React.FC = () => {
                           <img src="/gadachat-logo.png" alt="Gada Chat" className="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5 border border-purple-500/30" />
                         ) : isGadaVoice ? (
                           <img src="/gadavoice-logo.png" alt="GadaVoice" className="w-5 h-5 rounded-md object-contain shrink-0 mt-0.5 border border-indigo-500/30" />
+                        ) : isGadaCoop ? (
+                          <div className="w-5 h-5 rounded-md bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0 mt-0.5 text-emerald-400">
+                            <Handshake className="w-3.5 h-3.5" />
+                          </div>
                         ) : (
                           <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
                         )}

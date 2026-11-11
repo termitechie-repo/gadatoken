@@ -1,5 +1,5 @@
 import React from 'react';
-import { Copy, Check, ExternalLink, ArrowUp, ShieldCheck, FileText, Lock, Scale, AlertTriangle } from 'lucide-react';
+import { Copy, Check, ExternalLink, ArrowUp, ShieldCheck, FileText, Lock, Scale, AlertTriangle, Handshake } from 'lucide-react';
 import { TOKEN_DETAILS } from '../data/whitepaperData';
 import { TelegramIcon, FacebookIcon } from './SocialIcons';
 
@@ -54,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied, onNaviga
             </div>
 
             <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed mb-6 break-words text-center sm:text-left">
-              The foundational utility asset powering decentralized communication, creator live-streaming, digital marketplace trade, and banking settlement across the Gada ecosystem.
+              The foundational utility asset powering decentralized communication, creator live-streaming, cooperative finance, digital marketplace trade, and banking settlement across the Gada ecosystem.
             </p>
 
             {/* Contract Bar (Wrap-Safe and Centered on Mobile) */}
@@ -138,6 +138,23 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied, onNaviga
                     <span className="text-[11px] text-indigo-300/80 font-mono">(Messenger)</span>
                   </div>
                   <ExternalLink className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
+                </a>
+              </li>
+              <li>
+                <a 
+                  href={TOKEN_DETAILS.ecosystem.coopUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-emerald-300 transition-colors flex items-center justify-between p-1.5 rounded-lg hover:bg-emerald-950/40"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-5 h-5 rounded-md bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center shrink-0 text-emerald-400">
+                      <Handshake className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="font-semibold text-white">gadacoop.org</span>
+                    <span className="text-[11px] text-emerald-300/80 font-mono">(Cooperative)</span>
+                  </div>
+                  <ExternalLink className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 </a>
               </li>
               <li>
@@ -275,7 +292,7 @@ export const Footer: React.FC<FooterProps> = ({ onCopyContract, copied, onNaviga
         {/* Bottom Disclaimer Banner */}
         <div className="py-4 px-5 rounded-2xl bg-[#0B011D] border border-purple-900/40 text-[11px] sm:text-xs text-slate-300 font-medium leading-relaxed mb-8 text-center sm:text-left">
           <span className="font-bold text-white">Regulatory Disclaimer: </span>
-          Gada Token (GDT) is a cryptographic utility token deployed on the BNB Smart Chain designed strictly for digital communication, creator tipping, and e-commerce settlement within gada.chat and gadavoice.com. GDT is not an investment, security, or collective investment scheme. Please review our{' '}
+          Gada Token (GDT) is a cryptographic utility token deployed on the BNB Smart Chain designed strictly for digital communication, creator tipping, cooperative finance, and e-commerce settlement within gada.chat, gadavoice.com, and gadacoop.org. GDT is not an investment, security, or collective investment scheme. Please review our{' '}
           <a href="#privacy" onClick={(e) => handleLegalClick(e, 'privacy')} className="text-purple-400 underline font-semibold hover:text-purple-300">Privacy Policy</a>,{' '}
           <a href="#terms" onClick={(e) => handleLegalClick(e, 'terms')} className="text-purple-400 underline font-semibold hover:text-purple-300">Terms & Conditions</a>, and{' '}
           <a href="#crypto-disclosures" onClick={(e) => handleLegalClick(e, 'crypto-disclosures')} className="text-amber-400 underline font-semibold hover:text-amber-300">Crypto Disclosures</a>{' '}

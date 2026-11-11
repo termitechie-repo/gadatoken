@@ -28,7 +28,7 @@ export const PRIVACY_POLICY: LegalDocument = {
   subtitle: 'Information Collection, On-Chain Disclosures, and Web3 Data Protection',
   lastUpdated: 'November 2026',
   version: '1.0.0',
-  summary: 'This Privacy Policy explains how GADA CHAT LTD and its affiliates ("Gada", "we", "us", or "our") handle information across gadatoken.com, the GDT utility token smart contracts on BNB Smart Chain, and integrations with gada.chat and gadavoice.com. As a Web3 decentralized ecosystem, we operate on non-custodial principles and data minimization.',
+  summary: 'This Privacy Policy explains how GADA CHAT LTD and its affiliates ("Gada", "we", "us", or "our") handle information across gadatoken.com, the GDT utility token smart contracts on BNB Smart Chain, and integrations with gada.chat, gadavoice.com, and gadacoop.org. As a Web3 decentralized ecosystem, we operate on non-custodial principles and data minimization.',
   clauses: [
     {
       id: 'scope-controller',
@@ -108,7 +108,7 @@ export const PRIVACY_POLICY: LegalDocument = {
         'We do not sell, rent, or monetize your information. We disclose data only to trusted infrastructure providers under strict confidentiality agreements:',
         '• Cloudflare, Inc.: Global Content Delivery Network (CDN), DDoS mitigation, and edge worker computing services.',
         '• RPC Node Providers & Block Explorers: When querying blockchain balances, your browser communicates with BNB Smart Chain RPC endpoints (such as Binance public RPC nodes) and block explorers (BscScan / Etherscan Inc.).',
-        '• Ecosystem Partners: Seamless deep-linking to gada.chat and gadavoice.com is governed by the respective terms and privacy policies of those independent applications.',
+        '• Ecosystem Partners: Seamless deep-linking to gada.chat, gadavoice.com, and gadacoop.org is governed by the respective terms and privacy policies of those independent applications.',
         '• Legal & Law Enforcement: In response to verified subpoenas, court orders, or statutory regulatory mandates, we may disclose available technical logs to competent governmental authorities.',
       ],
     },
@@ -175,7 +175,7 @@ export const TERMS_AND_CONDITIONS: LegalDocument = {
       content: [
         'Gada Token (GDT) is a BEP-20 cryptographic utility token deployed on the BNB Smart Chain (Contract Address: 0x090458b49D6deAA9F7334a5e628aa26D82A3A082) with a fixed, non-mintable supply of 50,000,000,000 GDT.',
         'You expressly understand, acknowledge, and agree that:',
-        '• GDT is solely an ecosystem utility token designed to enable frictionless micro-payments, creator tipping, live-stream monetization, digital commerce settlement, and feature access across the gada.chat and gadavoice.com platforms.',
+        '• GDT is solely an ecosystem utility token designed to enable frictionless micro-payments, creator tipping, live-stream monetization, cooperative finance, digital commerce settlement, and feature access across the gada.chat, gadavoice.com, and gadacoop.org platforms.',
         '• GDT DOES NOT constitute a security, equity, bond, share, debenture, stock, collective investment scheme, partnership share, or debt instrument of any kind in GADA CHAT LTD or any affiliated entity.',
         '• GDT DOES NOT grant holders any dividend rights, revenue-sharing rights, intellectual property ownership, voting control over corporate entities, or rights to liquidation proceeds.',
         '• GDT is NOT legal tender and is NOT backed by any central bank, sovereign government, or physical asset.',
@@ -222,7 +222,7 @@ export const TERMS_AND_CONDITIONS: LegalDocument = {
       id: 'intellectual-property',
       title: '6. Intellectual Property & Brand Rights',
       content: [
-        'All visual design, logos, graphics, brand assets, trade dress, interactive software, whitepaper literature, and documentation on gadatoken.com, gada.chat, and gadavoice.com are the exclusive intellectual property of GADA CHAT LTD and its licensors.',
+        'All visual design, logos, graphics, brand assets, trade dress, interactive software, whitepaper literature, and documentation on gadatoken.com, gada.chat, gadavoice.com, and gadacoop.org are the exclusive intellectual property of GADA CHAT LTD and its licensors.',
         'You are granted a revocable, non-exclusive, non-transferable, limited license to access and display our portal for personal, non-commercial purposes. You may not reproduce, redistribute, modify, or commercially exploit any brand materials without express written authorization.',
         'The underlying smart contract source code deployed on the BNB Smart Chain is subject to its respective open-source licensing terms on BscScan.',
       ],
@@ -329,7 +329,7 @@ export const CRYPTO_RISK_DISCLOSURE: LegalDocument = {
         'Decentralized ecosystem participants face persistent cybersecurity threats from malicious actors:',
         '• Phishing & Fake Domains: Malicious actors frequently clone Web3 sites, launch deceptive search engine advertisements, and deploy spoofed social media accounts to harvest private keys or trick users into signing malicious wallet permits.',
         '• Verify Official URLs: ALWAYS confirm that you are visiting the official domain https://gadatoken.com. Official communications will only originate from verified channels.',
-        '• Impersonation Scams: Team members of GADA CHAT LTD, gada.chat, or gadavoice.com will NEVER ask you for your private key, seed phrase, or passwords, and will NEVER direct message you first asking for funds or wallet connections.',
+        '• Impersonation Scams: Team members of GADA CHAT LTD, gada.chat, gadavoice.com, or gadacoop.org will NEVER ask you for your private key, seed phrase, or passwords, and will NEVER direct message you first asking for funds or wallet connections.',
         '• Rogue Tokens & Fake Contracts: Verify the exact smart contract address (0x090458b49D6deAA9F7334a5e628aa26D82A3A082) on BscScan before swapping on decentralized liquidity pools.',
       ],
       warningBox: 'NEVER enter your 12 or 24-word recovery seed phrase into any website, form, email, or digital application. Real Web3 wallets only require secret recovery phrases during local software initialization.',
@@ -358,7 +358,7 @@ export const CRYPTO_RISK_DISCLOSURE: LegalDocument = {
       id: 'forward-looking-statements',
       title: '7. Forward-Looking Statements & Roadmap Disclaimer',
       content: [
-        'All materials, announcements, whitepaper presentations, and roadmaps published on gadatoken.com, gada.chat, and gadavoice.com contain forward-looking statements regarding planned ecosystem features, technical milestones, and integration timelines.',
+        'All materials, announcements, whitepaper presentations, and roadmaps published on gadatoken.com, gada.chat, gadavoice.com, and gadacoop.org contain forward-looking statements regarding planned ecosystem features, technical milestones, and integration timelines.',
         '• Projections, Not Guarantees: Forward-looking statements represent our developmental vision and objectives, but they do NOT constitute contractual guarantees, warranties, or promises that all features will be deployed as originally scheduled.',
         '• External Dependencies: Implementation timelines are subject to third-party software dependencies, regulatory developments, commercial negotiations, and technological challenges inherent to blockchain engineering.',
         '• Roadmap Adjustments: GADA CHAT LTD reserves the right to modify technical priorities, roadmap milestones, and software architecture to preserve project security, efficiency, and regulatory compliance.',

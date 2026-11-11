@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageSquare, Users, ArrowUpRight, Layers } from 'lucide-react';
+import { MessageSquare, Users, ArrowUpRight, Layers, Handshake } from 'lucide-react';
 import { TOKEN_DETAILS } from '../data/whitepaperData';
 
 export const Ecosystem: React.FC = () => {
@@ -17,12 +17,12 @@ export const Ecosystem: React.FC = () => {
             The Gada Ecosystem
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-200 font-medium">
-            GDT operates as the native transactional currency uniting social networking, real-time messaging, creator streaming, and marketplace commerce.
+            GDT operates as the native transactional currency uniting social networking, real-time messaging, creator streaming, cooperative finance, and marketplace commerce.
           </p>
         </div>
 
-        {/* Dual Platform Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        {/* Triple Platform Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
           
           {/* Card 1: gada.chat */}
           <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-purple-500/30 glass-panel-hover relative overflow-hidden flex flex-col justify-between">
@@ -133,6 +133,62 @@ export const Ecosystem: React.FC = () => {
             >
               <span>Visit gadavoice.com</span>
               <ArrowUpRight className="w-4 h-4 text-indigo-300" />
+            </a>
+          </div>
+
+          {/* Card 3: gadacoop.org */}
+          <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-purple-500/30 glass-panel-hover relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-600/10 rounded-bl-full pointer-events-none blur-xl" />
+            
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-14 h-14 rounded-2xl overflow-hidden border border-emerald-400/40 p-1 bg-[#062419] shadow-lg shadow-emerald-600/20 shrink-0 flex items-center justify-center text-emerald-400">
+                  <Handshake className="w-7 h-7" />
+                </div>
+                <span className="text-xs font-mono text-emerald-300 font-bold bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-500/30 whitespace-nowrap">
+                  Cooperative Platform
+                </span>
+              </div>
+
+              <div className="flex items-baseline gap-2 mb-2">
+                <h3 className="text-2xl font-bold text-white tracking-tight">gadacoop.org</h3>
+                <span className="text-xs text-emerald-300 font-mono font-semibold">Community Cooperative</span>
+              </div>
+              
+              <p className="text-sm sm:text-base text-slate-200 font-medium leading-relaxed mb-6 break-words">
+                A member-owned cooperative platform delivering community savings pools, group mutual aid, decentralized credit facilities, and collaborative enterprise initiatives powered by GDT settlement.
+              </p>
+
+              <div className="space-y-3 mb-8">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-400 mt-2 shrink-0" />
+                  <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
+                    <strong className="text-white font-bold mr-1">Mutual Pooling:</strong> Transparent community savings, rotary contribution pools, and emergency assistance funds.
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-400 mt-2 shrink-0" />
+                  <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
+                    <strong className="text-white font-bold mr-1">Cooperative Credit:</strong> Low-friction, decentralized micro-credit and peer-backed enterprise financing.
+                  </p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-400 mt-2 shrink-0" />
+                  <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
+                    <strong className="text-white font-bold mr-1">Dividend Distribution:</strong> Automated on-chain distribution of cooperative trade surplus and member dividends.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href={TOKEN_DETAILS.ecosystem.coopUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-[#09281C] border border-emerald-500/30 hover:border-emerald-400/60 text-xs sm:text-sm font-mono font-bold text-white hover:text-emerald-200 transition-colors"
+            >
+              <span>Visit gadacoop.org</span>
+              <ArrowUpRight className="w-4 h-4 text-emerald-300" />
             </a>
           </div>
 
